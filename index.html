@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#F5F1E8" />
+  <title>Macramé Paso a Paso — Offline</title>
+  <style>
+:root {
+  --bg: #F7F3EA;
+  --surface: #FFFDF8;
+  --text: #2F2A24;
+  --muted: #7B746C;
+  --primary: #8B6F47;
+  --primary-dark: #6E5636;
+  --success: #547A5D;
+  --warning: #B9823F;
+  --border: #E5DDD0;
+  --shadow: 0 8px 24px rgba(77, 59, 37, .08);
+  --radius: 20px;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); }
+button, input { font: inherit; }
+button { cursor: pointer; }
+.app-shell { min-height: 100vh; max-width: 720px; margin: 0 auto; padding-bottom: 84px; }
+.topbar { position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; padding: 18px 18px 12px; background: rgba(247,243,234,.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(229,221,208,.7); }
+.topbar h1 { margin: 2px 0 0; font-size: 1.6rem; }
+.eyebrow { color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+.icon-btn { border: 1px solid var(--border); background: var(--surface); border-radius: 14px; width: 42px; height: 42px; }
+.view { padding: 18px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); margin-bottom: 16px; }
+.hero { padding: 22px; }
+.hero h2, .card h2, .card h3 { margin-top: 0; }
+.muted { color: var(--muted); }
+.btn { width: 100%; border: none; border-radius: 14px; padding: 14px 16px; font-weight: 800; margin-top: 10px; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-secondary { background: #EFE7D9; color: var(--text); }
+.btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
+.progress-track { height: 10px; background: #EDE6DA; border-radius: 999px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--primary); }
+.metrics { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+.metric { text-align: center; background: #F3EDE2; border-radius: 16px; padding: 12px 8px; }
+.metric strong { display: block; font-size: 1.25rem; }
+.bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: min(720px,100%); display: grid; grid-template-columns: repeat(4,1fr); background: rgba(255,253,248,.97); border-top: 1px solid var(--border); padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); z-index: 20; }
+.nav-item { border: none; background: transparent; color: var(--muted); display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px; }
+.nav-item.active { color: var(--primary-dark); font-weight: 800; }
+.lesson-row { display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.lesson-row:last-child { border-bottom: none; }
+.status-dot { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: #EFE9DE; flex: 0 0 auto; }
+.lesson-row button { margin-left: auto; border: none; background: none; font-weight: 700; color: var(--primary-dark); }
+.step-image, .lesson-image { width: 100%; aspect-ratio: 4 / 3; border-radius: 18px; background: linear-gradient(135deg,#E8DFD1,#F7F3EA); display:grid; place-items:center; font-size: 3rem; margin: 12px 0 16px; }
+.visual-card { width:100%; aspect-ratio:4/3; border-radius:18px; overflow:hidden; margin:12px 0 16px; background:linear-gradient(145deg,#EEE5D8,#FFFDF8); border:1px solid var(--border); }
+.visual-card svg { width:100%; height:100%; display:block; }
+.video-card { overflow:hidden; padding:0; }
+.video-card img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; background:#E8DFD1; }
+.video-card-body { padding:16px 18px 18px; }
+.video-card-body h3 { margin:0 0 6px; }
+.video-card-body .btn { display:block; text-align:center; text-decoration:none; }
+.stepper { display:flex; gap:6px; margin: 12px 0 18px; }
+.stepper span { height:8px; flex:1; border-radius:999px; background:#E8E1D6; }
+.stepper span.active { background: var(--primary); }
+.option { display:block; width:100%; text-align:left; background:#FFF; border:1px solid var(--border); border-radius:14px; padding:12px 14px; margin:8px 0; }
+.option.selected { border-color: var(--primary); background:#F4EBDD; }
+.feedback { padding: 12px 14px; border-radius: 14px; margin-top: 12px; }
+.feedback.ok { background:#E8F0EA; color:#35533D; }
+.feedback.bad { background:#F7EDE3; color:#744A26; }
+.checklist label { display:flex; gap:10px; padding:9px 0; }
+.search { width:100%; padding:14px; border:1px solid var(--border); border-radius:14px; background:white; margin-bottom:14px; }
+.tag { display:inline-block; padding:6px 10px; border-radius:999px; background:#EFE7D9; margin: 2px 6px 2px 0; font-size:.85rem; }
+.photo-preview { width:100%; max-height:340px; object-fit:cover; border-radius:16px; border:1px solid var(--border); }
+.empty { text-align:center; padding: 28px 16px; color:var(--muted); }
+@media (min-width: 760px){ .view{padding:24px;} .topbar{padding:20px 24px 14px;} }
+
+  </style>
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <header class="topbar">
+      <div>
+        <small class="eyebrow">Curso interactivo</small>
+        <h1 id="page-title">Macramé</h1>
+      </div>
+      <button id="settings-btn" class="icon-btn" aria-label="Ajustes">⚙️</button>
+    </header>
+
+    <main id="view" class="view" aria-live="polite"></main>
+
+    <nav class="bottom-nav" aria-label="Navegación principal">
+      <button data-route="home" class="nav-item active"><span>🏠</span><small>Inicio</small></button>
+      <button data-route="course" class="nav-item"><span>🧶</span><small>Curso</small></button>
+      <button data-route="knots" class="nav-item"><span>🪢</span><small>Nudos</small></button>
+      <button data-route="progress" class="nav-item"><span>📊</span><small>Progreso</small></button>
+    </nav>
+  </div>
+
+  <script>
+window.COURSE = {
+  modules:[
+    {id:'m01',title:'Primeros pasos'},
+    {id:'m02',title:'Nudos fundamentales'}
+  ],
+  lessons:[
+    {
+      id:'m01-c01-introduccion',module:'m01',order:1,type:'theory',title:'Introducción al macramé',englishTitle:'Introduction to Macramé',difficulty:'Principiante',duration:7,
+      objective:'Entender qué es el macramé y cómo funciona el curso.',materials:[],
+      explanation:'El macramé es una técnica textil basada principalmente en crear estructuras mediante nudos. En este curso aprenderás a preparar, anudar, controlar la tensión, combinar técnicas y construir proyectos.',
+      video:{title:'Macramé para principiantes: nudos básicos',url:'https://www.youtube.com/watch?v=MBMq8RIVAOQ'},
+      steps:[
+        {title:'Observa la estructura',text:'Identifica el soporte, las cuerdas y los grupos de nudos.',icon:'🧶'},
+        {title:'Aprende el vocabulario',text:'Cuerda de trabajo, cuerda guía, soporte y tensión serán conceptos recurrentes.',icon:'🪢'},
+        {title:'Entiende la progresión',text:'Preparar → anudar → controlar tensión → combinar → crear.',icon:'🧭'}
+      ],
+      mistakes:[{title:'Confundir aprender con mirar',text:'El curso requiere práctica física. Ver una técnica no sustituye hacerla.'}],
+      tips:['Trabaja con movimientos lentos al principio.'],
+      exercise:{title:'Observación inicial',text:'Observa una pieza de macramé e identifica soporte, cuerdas, nudos y flecos.',photoOptional:true},
+      selfAssessment:['Entiendo que el macramé se construye mediante nudos.','Distingo cuerda de trabajo y soporte.','Entiendo que la tensión influye en el acabado.'],
+      quiz:[
+        {q:'¿Qué caracteriza principalmente al macramé?',options:['Uso de agujas','Construcción mediante nudos','Pegado de fibras'],answer:1,feedback:'El macramé se construye principalmente mediante nudos.'},
+        {q:'¿Qué es la tensión?',options:['El grosor de la cuerda','La fuerza aplicada al ajustar un nudo','La longitud de la pieza'],answer:1,feedback:'La tensión es la fuerza con la que ajustamos el nudo.'},
+        {q:'¿Para qué sirve un soporte?',options:['Sujetar el trabajo','Cortar la cuerda','Peinar flecos'],answer:0,feedback:'El soporte mantiene el trabajo estable mientras anudas.'}
+      ]
+    },
+    {
+      id:'m01-c02-materiales',module:'m01',order:2,type:'theory',title:'Materiales y herramientas',englishTitle:'Materials & Tools',difficulty:'Principiante',duration:10,
+      objective:'Reconocer los materiales básicos y preparar un kit sencillo para practicar.',materials:['Cordón de algodón 3–4 mm','Tijeras','Cinta métrica','Barra o soporte','Cinta adhesiva o pinza'],
+      explanation:'Para empezar conviene usar cordón suficientemente grueso para ver bien los movimientos. Los cordones torcidos permiten peinar flecos; los trenzados mantienen mejor su estructura.',
+      steps:[
+        {title:'Elige el cordón',text:'Para práctica básica, 3–4 mm permite ver claramente el recorrido.',icon:'🧵'},
+        {title:'Prepara las herramientas',text:'Tijeras, cinta métrica y un soporte estable son suficientes para comenzar.',icon:'✂️'},
+        {title:'Organiza la mesa',text:'Trabaja con espacio libre para que las cuerdas no se enreden.',icon:'📏'}
+      ],
+      mistakes:[{title:'Usar cuerda demasiado fina',text:'Dificulta ver el recorrido del nudo cuando estás aprendiendo.'}],
+      tips:['No necesitas comprar muchas herramientas para empezar.'],
+      exercise:{title:'Prepara tu kit',text:'Reúne cordón, tijeras, cinta métrica y un soporte.',photoOptional:true},
+      selfAssessment:['Tengo cordón adecuado.','Tengo tijeras y cinta métrica.','Tengo un soporte donde fijar las cuerdas.'],
+      quiz:[
+        {q:'¿Qué grosor puede ser cómodo para empezar?',options:['0,2 mm','3–4 mm','30 mm'],answer:1,feedback:'3–4 mm suele ser manejable y visual para principiantes.'},
+        {q:'¿Qué herramienta usamos para preparar longitudes?',options:['Peine','Cinta métrica','Aguja'],answer:1,feedback:'La cinta métrica ayuda a preparar longitudes consistentes.'}
+      ]
+    },
+    {
+      id:'m01-c03-preparacion',module:'m01',order:3,type:'theory',title:'Preparación de las cuerdas',englishTitle:'Preparing the Cords',difficulty:'Principiante',duration:8,
+      objective:'Medir, cortar y ordenar las cuerdas antes de empezar.',materials:['Cordón','Tijeras','Cinta métrica'],
+      explanation:'La preparación influye en la simetría y evita quedarte sin cuerda a mitad del trabajo.',
+      steps:[
+        {title:'Mide',text:'Extiende el cordón sin tensión y mide la longitud indicada.',icon:'📏'},
+        {title:'Corta',text:'Haz cortes limpios y prepara todas las piezas necesarias.',icon:'✂️'},
+        {title:'Ordena',text:'Agrupa las cuerdas por longitud antes de fijarlas.',icon:'🧶'}
+      ],
+      mistakes:[{title:'Cortar demasiado justo',text:'Deja margen cuando tengas dudas sobre el consumo del nudo.'}],
+      tips:['Primero mide todas las piezas; después corta.'],
+      exercise:{title:'Prepara 4 cuerdas',text:'Corta 4 cuerdas de 80 cm y colócalas paralelas.',photoOptional:true},
+      selfAssessment:['Medí antes de cortar.','Las cuatro cuerdas tienen longitud similar.','La zona de trabajo está preparada.'],
+      quiz:[{q:'¿Por qué no existe una única proporción válida para todos los proyectos?',options:['Porque todos usan el mismo nudo','Porque distintos nudos consumen diferentes cantidades','Porque la cuerda siempre se estira'],answer:1,feedback:'El consumo cambia según nudo, grosor y densidad.'}]
+    },
+    {
+      id:'m02-c01-alondra',module:'m02',order:1,type:'knot',title:'Nudo alondra',englishTitle:"Lark's Head Knot",difficulty:'Fácil',duration:10,
+      objective:'Fijar correctamente una cuerda sobre un soporte.',materials:['1 cuerda de 80 cm','Barra o aro'],
+      explanation:'El nudo alondra se usa habitualmente para montar cuerdas sobre un soporte antes de comenzar el diseño.',
+      steps:[
+        {title:'Dobla',text:'Dobla la cuerda por la mitad.',icon:'➰'},
+        {title:'Coloca el bucle',text:'Lleva el bucle sobre o detrás del soporte.',icon:'🪵'},
+        {title:'Pasa los extremos',text:'Introduce ambos extremos dentro del bucle.',icon:'🧶'},
+        {title:'Ajusta',text:'Tira de ambos extremos de forma uniforme.',icon:'↕️'}
+      ],
+      video:{title:'Tutorial de nudo alondra',url:'https://www.youtube.com/watch?v=QsRRBN2FxFw'},
+      mistakes:[{title:'Extremos desiguales',text:'Suele ocurrir cuando la cuerda no se dobló aproximadamente por el centro.'}],
+      tips:['Compara ambos extremos antes de apretar por completo.'],
+      exercise:{title:'Monta 4 cuerdas',text:'Coloca 4 cuerdas con nudo alondra sobre una barra. Debes obtener 8 extremos verticales.',photoOptional:true},
+      selfAssessment:['Los cuatro nudos tienen la misma orientación.','Los extremos tienen longitudes similares.','La separación es relativamente uniforme.'],
+      quiz:[
+        {q:'¿Cuál es la función principal del nudo alondra?',options:['Fijar una cuerda a un soporte','Cortar cuerda','Crear flecos'],answer:0,feedback:'El nudo alondra sirve para montar/fijar cuerdas.'},
+        {q:'¿Qué haces primero?',options:['Cortar el soporte','Doblar la cuerda','Peinar la cuerda'],answer:1,feedback:'Primero se dobla la cuerda.'},
+        {q:'4 cuerdas dobladas producen cuántos extremos?',options:['4','6','8'],answer:2,feedback:'Cada cuerda doblada genera dos extremos.'}
+      ]
+    },
+    {
+      id:'m02-c02-medio-nudo',module:'m02',order:2,type:'knot',title:'Medio nudo',englishTitle:'Half Square Knot',difficulty:'Fácil',duration:10,
+      objective:'Comprender el movimiento que constituye la mitad de un nudo plano.',materials:['4 extremos de cuerda','Soporte'],
+      explanation:'Las dos cuerdas exteriores trabajan alrededor de las dos centrales. Repetir el mismo medio nudo desde un lado genera una espiral.',
+      steps:[
+        {title:'Organiza 4 cuerdas',text:'Las dos centrales quedan como guía y las exteriores trabajan.',icon:'||||'},
+        {title:'Cruza la izquierda',text:'Pásala sobre las dos centrales.',icon:'↪️'},
+        {title:'Cruza la derecha',text:'Pásala sobre el extremo izquierdo y detrás de las centrales.',icon:'↩️'},
+        {title:'Cierra el bucle',text:'Saca la cuerda derecha por el bucle izquierdo y ajusta.',icon:'🪢'}
+      ],
+      video:{title:'Tutorial de medio nudo',url:'https://www.youtube.com/watch?v=AqoZ9oTIK3s'},
+      mistakes:[{title:'Mover las cuerdas centrales',text:'Las centrales deben permanecer relativamente alineadas como guía.'}],
+      tips:['Aprieta las exteriores de forma equilibrada.'],
+      exercise:{title:'Haz 5 medios nudos',text:'Realiza 5 medios nudos consecutivos empezando siempre por el mismo lado.',photoOptional:true},
+      selfAssessment:['Identifico las cuerdas centrales.','Las exteriores realizan el movimiento principal.','Empiezo a observar el giro.'],
+      quiz:[
+        {q:'¿Qué cuerdas trabajan principalmente?',options:['Las exteriores','Las centrales','Todas por igual'],answer:0,feedback:'Las exteriores realizan el recorrido principal.'},
+        {q:'¿Qué ocurre si repites el medio nudo desde el mismo lado?',options:['Se genera una espiral','Se corta la cuerda','No cambia nada'],answer:0,feedback:'La repetición unilateral genera una espiral.'}
+      ]
+    },
+    {
+      id:'m02-c03-nudo-plano',module:'m02',order:3,type:'knot',title:'Nudo plano',englishTitle:'Square Knot',difficulty:'Fácil',duration:12,
+      objective:'Construir un nudo plano completo y simétrico.',materials:['4 extremos de cuerda','Soporte'],
+      explanation:'Un nudo plano se forma con un medio nudo hacia un lado y otro hacia el lado contrario.',
+      steps:[
+        {title:'Primera mitad',text:'Realiza el medio nudo aprendido anteriormente.',icon:'1️⃣'},
+        {title:'Invierte el lado',text:'Si comenzaste por la izquierda, ahora comienza por la derecha.',icon:'🔁'},
+        {title:'Segunda mitad',text:'Completa el medio nudo contrario.',icon:'2️⃣'},
+        {title:'Alinea',text:'Ajusta ambas mitades para mantener el nudo centrado.',icon:'🪢'}
+      ],
+      video:{title:'Tutorial de nudo plano',url:'https://www.youtube.com/watch?v=iEYjbmZjySM'},
+      mistakes:[{title:'Repetir siempre el mismo lado',text:'En vez de un nudo plano aparecerá una espiral.'}],
+      tips:['Piensa: izquierda → derecha, o derecha → izquierda.'],
+      exercise:{title:'Haz 5 nudos planos',text:'Realiza 5 nudos planos completos intentando mantener tamaño y tensión similares.',photoOptional:true},
+      selfAssessment:['Los nudos permanecen centrados.','No aparece una espiral continua.','Los tamaños son parecidos.','Las centrales permanecen alineadas.'],
+      quiz:[
+        {q:'¿Cuántas mitades tiene un nudo plano?',options:['1','2','4'],answer:1,feedback:'Se compone de dos medios nudos opuestos.'},
+        {q:'¿Qué ocurre si no alternamos lados?',options:['El tejido gira','La cuerda se corta','No pasa nada'],answer:0,feedback:'Al repetir el mismo lado aparece una espiral.'},
+        {q:'¿Qué cuerdas actúan normalmente como relleno?',options:['Las dos centrales','Las dos exteriores','Solo una'],answer:0,feedback:'Las centrales funcionan como guía/relleno.'}
+      ]
+    }
+  ]
+};
+
+window.KNOTS = COURSE.lessons.filter(l=>l.type==='knot').map(l=>({id:l.id,title:l.title,englishTitle:l.englishTitle,difficulty:l.difficulty,lessonId:l.id,summary:l.explanation}));
+
+window.PROJECTS=[{
+  id:'p01-llavero',title:'Llavero básico',difficulty:'Principiante',duration:'20–30 min',
+  prerequisites:['m02-c01-alondra','m02-c03-nudo-plano'],
+  materials:['Anilla o mosquetón','2 cuerdas de 70 cm','Tijeras','Cinta métrica'],
+  steps:['Dobla ambas cuerdas.','Móntalas sobre la anilla usando dos nudos alondra.','Ordena los cuatro extremos.','Realiza varios nudos planos.','Deja una pequeña sección final libre.','Iguala los extremos.'],
+  selfAssessment:['Los nudos están centrados.','El ancho es relativamente constante.','La unión con la anilla está firme.','Los extremos tienen un acabado uniforme.']
+}];
+
+const STORAGE_KEY = 'macrame_app_state_v1';
+const DEFAULT_STATE = {
+  currentLesson: 'm01-c01-introduccion',
+  currentStep: 0,
+  completedLessons: [],
+  completedExercises: [],
+  quizResults: {},
+  completedProjects: [],
+  lastActivity: null,
+  started: false
+};
+function loadState(){
+  try { return { ...DEFAULT_STATE, ...(JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}) }; }
+  catch { return { ...DEFAULT_STATE }; }
+}
+function saveState(patch){
+  const state = { ...loadState(), ...patch, lastActivity: new Date().toISOString() };
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  return state;
+}
+function resetState(){ localStorage.removeItem(STORAGE_KEY); return { ...DEFAULT_STATE }; }
+
+const PHOTO_DB='macrame_photos_v1';
+const PHOTO_STORE='photos';
+function openPhotoDB(){
+  return new Promise((resolve,reject)=>{
+    const req=indexedDB.open(PHOTO_DB,1);
+    req.onupgradeneeded=()=>{ const db=req.result; if(!db.objectStoreNames.contains(PHOTO_STORE)) db.createObjectStore(PHOTO_STORE,{keyPath:'id'}); };
+    req.onsuccess=()=>resolve(req.result); req.onerror=()=>reject(req.error);
+  });
+}
+async function resizeImage(file,maxSide=1400,quality=.82){
+  const bitmap=await createImageBitmap(file); const scale=Math.min(1,maxSide/Math.max(bitmap.width,bitmap.height));
+  const canvas=document.createElement('canvas'); canvas.width=Math.round(bitmap.width*scale); canvas.height=Math.round(bitmap.height*scale);
+  canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);
+  return new Promise(resolve=>canvas.toBlob(resolve,'image/jpeg',quality));
+}
+async function savePracticePhoto(lessonId,file){
+  const db=await openPhotoDB(); const blob=await resizeImage(file); const id=`${lessonId}-practice`;
+  return new Promise((resolve,reject)=>{ const tx=db.transaction(PHOTO_STORE,'readwrite'); tx.objectStore(PHOTO_STORE).put({id,lessonId,date:new Date().toISOString(),blob}); tx.oncomplete=()=>resolve(id); tx.onerror=()=>reject(tx.error); });
+}
+async function getPracticePhoto(lessonId){
+  const db=await openPhotoDB(); return new Promise((resolve,reject)=>{ const req=db.transaction(PHOTO_STORE).objectStore(PHOTO_STORE).get(`${lessonId}-practice`); req.onsuccess=()=>resolve(req.result||null); req.onerror=()=>reject(req.error); });
+}
+async function deletePracticePhoto(lessonId){ const db=await openPhotoDB(); return new Promise((resolve,reject)=>{ const tx=db.transaction(PHOTO_STORE,'readwrite'); tx.objectStore(PHOTO_STORE).delete(`${lessonId}-practice`); tx.oncomplete=resolve; tx.onerror=()=>reject(tx.error); }); }
+async function listPracticePhotos(){ const db=await openPhotoDB(); return new Promise((resolve,reject)=>{ const req=db.transaction(PHOTO_STORE).objectStore(PHOTO_STORE).getAll(); req.onsuccess=()=>resolve(req.result||[]); req.onerror=()=>reject(req.error); }); }
+
+function gradeQuestion(question, choiceIndex){ return choiceIndex === question.answer; }
+function saveQuizResult(lessonId, score, total){ const state=loadState(); const quizResults={...state.quizResults,[lessonId]:{score,total,date:new Date().toISOString()}}; saveState({quizResults}); }
+
+function lessonStatus(lessonId){
+  const state=loadState();
+  if(state.completedLessons.includes(lessonId)) return 'completed';
+  const firstIncomplete=COURSE.lessons.find(l=>!state.completedLessons.includes(l.id));
+  if(!firstIncomplete) return 'completed';
+  if(lessonId===firstIncomplete.id) return state.currentLesson===lessonId && state.started ? 'progress' : 'available';
+  return 'locked';
+}
+function markLessonComplete(lessonId){
+  const state=loadState();
+  const wasCompleted=state.completedLessons.includes(lessonId);
+  const done=[...new Set([...state.completedLessons,lessonId])];
+  const firstIncomplete=COURSE.lessons.find(l=>!done.includes(l.id));
+  const patch={completedLessons:done};
+  if(!wasCompleted){
+    patch.currentLesson=firstIncomplete?firstIncomplete.id:lessonId;
+    patch.currentStep=0;
+    patch.started=false;
+  }
+  saveState(patch);
+}
+function progressSummary(){
+  const state=loadState(); const total=COURSE.lessons.length; const completed=state.completedLessons.length; const knots=COURSE.lessons.filter(l=>l.type==='knot'&&state.completedLessons.includes(l.id)).length;
+  return {completed,total,percent:Math.round((completed/Math.max(total,1))*100),knots,projects:state.completedProjects.length};
+}
+
+let currentRoute='home';
+function navigate(route, params={}){
+  currentRoute=route; history.pushState({route,params},'',`#${route}`); renderRoute(route,params);
+}
+window.addEventListener('popstate',e=>{ const s=e.state||{route:'home',params:{}}; currentRoute=s.route; renderRoute(s.route,s.params||{}); });
+function setActiveNav(route){ document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.route===route)); }
+
+function esc(s=''){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+function moduleTitle(id){return COURSE.modules.find(m=>m.id===id)?.title||'';}
+function lessonById(id){return COURSE.lessons.find(l=>l.id===id);}
+function projectById(id){return PROJECTS.find(p=>p.id===id);}
+function statusIcon(s){return s==='completed'?'✓':s==='progress'?'▶':s==='available'?'○':'🔒';}
+function titleForRoute(route){return ({home:'Macramé',course:'Curso',knots:'Nudos',progress:'Progreso',lesson:'Clase',exercise:'Práctica',quiz:'Comprobación',project:'Proyecto',settings:'Ajustes'})[route]||'Macramé';}
+
+function lessonVisual(id,step=0){
+  const ink='#6E5636', cord='#B9823F', light='#E9DDCA', green='#547A5D';
+  const wrap=(body,label)=>`<div class="visual-card" role="img" aria-label="${esc(label)}"><svg viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"><rect width="640" height="480" fill="#FBF7EF"/><circle cx="560" cy="70" r="90" fill="#F1E8D9"/>${body}<text x="320" y="440" text-anchor="middle" font-family="system-ui,sans-serif" font-size="20" font-weight="700" fill="${ink}">${esc(label)}</text></svg></div>`;
+  if(id==='m01-c01-introduccion') return wrap(`<rect x="120" y="90" width="400" height="24" rx="12" fill="${ink}"/><path d="M210 114v76c0 38 60 38 60 0v-76M370 114v76c0 38 60 38 60 0v-76" fill="none" stroke="${cord}" stroke-width="13" stroke-linecap="round"/><path d="M240 220c-80 55-25 125 80 95 105-30 160 40 80 95M400 220c80 55 25 125-80 95-105-30-160 40-80 95" fill="none" stroke="${green}" stroke-width="11" stroke-linecap="round"/>`,'Estructura básica del macramé');
+  if(id==='m01-c02-materiales') return wrap(`<circle cx="180" cy="230" r="85" fill="none" stroke="${cord}" stroke-width="20"/><circle cx="180" cy="230" r="38" fill="${light}"/><path d="M245 280c80 10 120 60 170 65" fill="none" stroke="${cord}" stroke-width="14" stroke-linecap="round"/><circle cx="410" cy="180" r="34" fill="none" stroke="${ink}" stroke-width="10"/><circle cx="480" cy="180" r="34" fill="none" stroke="${ink}" stroke-width="10"/><path d="M432 205l-90 120M458 205l80 120" stroke="${ink}" stroke-width="12" stroke-linecap="round"/><rect x="285" y="85" width="250" height="40" rx="8" fill="${green}"/><path d="M310 85v20m35-20v13m35-13v20m35-20v13m35-13v20m35-20v13" stroke="#fff" stroke-width="5"/>`,'Cordón, tijeras y cinta métrica');
+  if(id==='m01-c03-preparacion') return wrap(`<rect x="90" y="90" width="460" height="34" rx="8" fill="${green}"/><path d="M120 90v18m50-18v11m50-11v18m50-18v11m50-11v18m50-18v11m50-11v18m50-18v11" stroke="#fff" stroke-width="5"/><path d="M180 160v220M270 160v220M360 160v220M450 160v220" stroke="${cord}" stroke-width="12" stroke-linecap="round"/><path d="M155 250h320" stroke="${ink}" stroke-width="4" stroke-dasharray="12 12"/>`,'Cuatro cuerdas medidas y ordenadas');
+  if(id==='m02-c01-alondra'){
+    const phase=Math.min(Math.max(step,1),4);
+    if(phase===1) return wrap(`<path d="M210 350V185c0-95 220-95 220 0v165" fill="none" stroke="${cord}" stroke-width="16" stroke-linecap="round"/><path d="M320 110v-45" stroke="${green}" stroke-width="7"/><path d="M300 86l20-22 20 22" fill="none" stroke="${green}" stroke-width="7"/>`,'1. Dobla la cuerda por la mitad');
+    if(phase===2) return wrap(`<rect x="105" y="175" width="430" height="26" rx="13" fill="${ink}"/><path d="M245 360V220c0-90 150-90 150 0v140" fill="none" stroke="${cord}" stroke-width="16" stroke-linecap="round"/><path d="M320 145v-55" stroke="${green}" stroke-width="7"/><path d="M300 112l20-22 20 22" fill="none" stroke="${green}" stroke-width="7"/>`,'2. Lleva el bucle detrás del soporte');
+    if(phase===3) return wrap(`<rect x="105" y="120" width="430" height="26" rx="13" fill="${ink}"/><path d="M235 380V205c0-80 170-80 170 0v48c0 80-170 80-170 0" fill="none" stroke="${cord}" stroke-width="16" stroke-linecap="round"/><path d="M270 245v100m100-100v100" stroke="${green}" stroke-width="8"/><path d="M255 322l15 22 15-22m70 0 15 22 15-22" fill="none" stroke="${green}" stroke-width="7"/>`,'3. Pasa los extremos por el bucle');
+    return wrap(`<rect x="105" y="110" width="430" height="26" rx="13" fill="${ink}"/><path d="M245 136c0 90 150 90 150 0M245 136v245M395 136v245" fill="none" stroke="${cord}" stroke-width="16" stroke-linecap="round"/><path d="M225 255h190" stroke="${green}" stroke-width="6"/><path d="M245 240l-20 15 20 15m150-30 20 15-20 15" fill="none" stroke="${green}" stroke-width="6"/>`,'4. Ajusta ambos extremos por igual');
+  }
+  if(id==='m02-c02-medio-nudo') return wrap(`<path d="M235 90v300M285 90v300M355 90v300M405 90v300" stroke="${light}" stroke-width="12" stroke-linecap="round"/><path d="M235 105c0 95 30 150 170 185M405 105c0 95-30 150-170 185" fill="none" stroke="${cord}" stroke-width="16" stroke-linecap="round"/><path d="M320 180v100" stroke="${green}" stroke-width="7"/><path d="M300 260l20 22 20-22" fill="none" stroke="${green}" stroke-width="7"/>`,'Cruce del medio nudo');
+  if(id==='m02-c03-nudo-plano') return wrap(`<path d="M270 80v320M305 80v320M335 80v320M370 80v320" stroke="${light}" stroke-width="11"/><path d="M220 130c30 0 48 38 85 55 37 17 78 17 115-10M420 245c-30 0-48 38-85 55-37 17-78 17-115-10" fill="none" stroke="${cord}" stroke-width="16" stroke-linecap="round"/><rect x="250" y="205" width="140" height="54" rx="27" fill="none" stroke="${ink}" stroke-width="7"/>`,'Dos medios nudos opuestos');
+  return `<div class="lesson-image">🧶</div>`;
+}
+
+function youtubeId(url=''){ const m=String(url).match(/[?&]v=([^&]+)/); return m?m[1]:''; }
+function videoCard(video){
+  if(!video?.url) return '';
+  const id=youtubeId(video.url), thumb=id?`https://i.ytimg.com/vi/${id}/hqdefault.jpg`:'';
+  return `<section class="card video-card"><img src="${esc(thumb)}" alt="Vista previa: ${esc(video.title)}" loading="lazy"><div class="video-card-body"><small class="eyebrow">Vídeo tutorial</small><h3>${esc(video.title)}</h3><p class="muted">Se abre en YouTube y necesita conexión a internet.</p><a class="btn btn-secondary" target="_blank" rel="noopener" href="${esc(video.url)}">▶ Ver tutorial</a><a href="${esc(video.url)}" target="_blank" rel="noopener" class="muted" style="display:block;text-align:center;margin-top:12px;word-break:break-all">${esc(video.url)}</a></div></section>`;
+}
+
+function renderRoute(route='home',params={}){
+  document.getElementById('page-title').textContent=titleForRoute(route);
+  setActiveNav(['home','course','knots','progress'].includes(route)?route:'');
+  if(route==='home') return renderHome();
+  if(route==='course') return renderCourse();
+  if(route==='knots') return renderKnots();
+  if(route==='progress') return renderProgress();
+  if(route==='lesson') return renderLesson(params.lessonId, params.step);
+  if(route==='exercise') return renderExercise(params.lessonId);
+  if(route==='quiz') return renderQuiz(params.lessonId, params.q||0, params.score||0);
+  if(route==='project') return renderProject(params.projectId||'p01-llavero');
+  if(route==='settings') return renderSettings();
+  renderHome();
+}
+
+function renderHome(){
+  const state=loadState(), p=progressSummary(), current=lessonById(state.currentLesson)||COURSE.lessons[0];
+  const newUser=!state.started && state.completedLessons.length===0;
+  const finished=state.completedLessons.length===COURSE.lessons.length;
+  let main;
+  if(finished){
+    main=`<section class="card hero"><span class="tag">Curso piloto completado</span><h2>🎉 Has terminado esta ruta</h2><p class="muted">Puedes repasar cualquier clase o continuar con el proyecto.</p><button class="btn btn-primary" onclick="navigate('course')">Repasar curso</button><button class="btn btn-secondary" onclick="navigate('project',{projectId:'p01-llavero'})">Abrir proyecto</button></section>`;
+  } else if(newUser){
+    main=`<section class="card hero"><span class="tag">Nivel principiante</span><h2>Aprende macramé paso a paso</h2><p class="muted">Lecciones breves, práctica real y progreso guardado en este dispositivo.</p><button class="btn btn-primary" onclick="startCourse()">Empezar curso</button></section>`;
+  } else {
+    const stepText=state.currentStep?` · Paso ${state.currentStep+1}`:'';
+    main=`<section class="card hero"><small class="eyebrow">Continuar aprendiendo</small><h2>${esc(current.title)}</h2><p class="muted">${esc(moduleTitle(current.module))}${stepText}</p><div class="progress-track"><div class="progress-fill" style="width:${Math.round(((state.currentStep||0)/Math.max(current.steps.length,1))*100)}%"></div></div><button class="btn btn-primary" onclick="navigate('lesson',{lessonId:'${current.id}',step:${state.currentStep||0}})">Continuar</button></section>`;
+  }
+  document.getElementById('view').innerHTML=main+`
+    <section class="card"><h3>Tu progreso</h3><div class="metrics"><div class="metric"><strong>${p.completed}</strong><small>Clases</small></div><div class="metric"><strong>${p.knots}</strong><small>Nudos</small></div><div class="metric"><strong>${p.projects}</strong><small>Proyectos</small></div></div></section>
+    <section class="card"><h3>Próximo objetivo</h3><p>${finished?'Proyecto: Llavero básico':esc(current.title)}</p><button class="btn btn-ghost" onclick="navigate('${finished?'project':'course'}'${finished?`,{projectId:'p01-llavero'}`:''})">Ver ${finished?'proyecto':'recorrido'}</button></section>`;
+}
+function startCourse(){saveState({started:true,currentLesson:COURSE.lessons[0].id,currentStep:0});navigate('lesson',{lessonId:COURSE.lessons[0].id,step:0});}
+
+function renderCourse(){
+  let html='';
+  for(const m of COURSE.modules){
+    html+=`<section class="card"><small class="eyebrow">${esc(m.id.toUpperCase())}</small><h2>${esc(m.title)}</h2>`;
+    for(const l of COURSE.lessons.filter(x=>x.module===m.id)){
+      const s=lessonStatus(l.id); html+=`<div class="lesson-row"><div class="status-dot">${statusIcon(s)}</div><div><strong>${esc(l.title)}</strong><div class="muted">${esc(l.englishTitle||'')} · ${esc(l.duration)} min</div></div><button ${s==='locked'?'disabled':''} onclick="${s==='locked'?`alert('Completa primero la clase anterior.')`:`navigate('lesson',{lessonId:'${l.id}',step:0})`}">${s==='completed'?'Repasar':s==='progress'?'Continuar':s==='locked'?'Bloqueada':'Abrir'}</button></div>`;
+    }
+    html+='</section>';
+  }
+  html+=`<section class="card"><small class="eyebrow">Proyecto piloto</small><h2>Llavero básico</h2><p class="muted">Aplica el nudo alondra y el nudo plano en una pieza real.</p><button class="btn btn-primary" onclick="navigate('project',{projectId:'p01-llavero'})">Ver proyecto</button></section>`;
+  document.getElementById('view').innerHTML=html;
+}
+
+function renderLesson(id,step=0){
+  const l=lessonById(id); if(!l) return navigate('course');
+  const state=loadState(); if(!state.started) saveState({started:true,currentLesson:id,currentStep:step}); else saveState({currentLesson:id,currentStep:step,started:true});
+  if(step===0){
+    document.getElementById('view').innerHTML=`<section class="card hero"><span class="tag">${esc(l.difficulty)}</span><span class="tag">⏱ ${esc(l.duration)} min</span>${lessonVisual(id,0)}<h2>${esc(l.title)}</h2><p class="muted"><em>${esc(l.englishTitle||'')}</em></p><h3>Vas a aprender</h3><p>${esc(l.objective)}</p>${l.materials.length?`<h3>Necesitas</h3><ul>${l.materials.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}<h3>Antes de empezar</h3><p>${esc(l.explanation)}</p><button class="btn btn-primary" onclick="navigate('lesson',{lessonId:'${id}',step:1})">Empezar clase</button></section>${videoCard(l.video)}`; return;
+  }
+  const idx=step-1;
+  if(idx<l.steps.length){
+    const s=l.steps[idx];
+    document.getElementById('view').innerHTML=`<section class="card"><small class="eyebrow">Paso ${step} de ${l.steps.length}</small><div class="stepper">${l.steps.map((_,i)=>`<span class="${i<=idx?'active':''}"></span>`).join('')}</div>${lessonVisual(id,step)}<h2>${esc(s.title)}</h2><p>${esc(s.text)}</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><button class="btn btn-ghost" onclick="navigate('lesson',{lessonId:'${id}',step:${Math.max(0,step-1)}})">← Anterior</button><button class="btn btn-primary" onclick="navigate('lesson',{lessonId:'${id}',step:${step+1}})">Siguiente →</button></div></section>`; return;
+  }
+  document.getElementById('view').innerHTML=`<section class="card"><h2>Repaso antes de practicar</h2>${lessonVisual(id,l.steps.length)}<h3>⚠️ Error frecuente</h3>${(l.mistakes||[]).map(m=>`<p><strong>${esc(m.title)}:</strong> ${esc(m.text)}</p>`).join('')}<h3>💡 Consejo</h3>${(l.tips||[]).map(t=>`<p>${esc(t)}</p>`).join('')}<button class="btn btn-primary" onclick="navigate('exercise',{lessonId:'${id}'})">Ir a la práctica</button></section>${videoCard(l.video)}`;
+}
+
+async function renderExercise(id){
+  const l=lessonById(id); if(!l) return navigate('course');
+  const photo=await getPracticePhoto(id); const url=photo?URL.createObjectURL(photo.blob):null;
+  document.getElementById('view').innerHTML=`<section class="card"><small class="eyebrow">Tu práctica</small><h2>${esc(l.exercise.title)}</h2><p>${esc(l.exercise.text)}</p>${lessonVisual(id,l.steps.length)}<h3>Revisa tu trabajo</h3><div class="checklist">${l.selfAssessment.map((x,i)=>`<label><input type="checkbox" id="check-${i}"> <span>${esc(x)}</span></label>`).join('')}</div><h3>Fotografía <span class="tag">opcional</span></h3>${url?`<img class="photo-preview" src="${url}" alt="Práctica guardada"><button class="btn btn-ghost" onclick="removePhoto('${id}')">Eliminar fotografía</button>`:'<p class="muted">Puedes guardar una evidencia de tu práctica en este dispositivo.</p>'}<input id="photo-input" type="file" accept="image/*" capture="environment" style="display:none" onchange="handlePhoto('${id}',this.files[0])"><button class="btn btn-secondary" onclick="document.getElementById('photo-input').click()">📷 ${photo?'Cambiar':'Añadir'} fotografía</button><p class="muted"><small>La fotografía permanece en este dispositivo.</small></p><button class="btn btn-primary" onclick="completeExercise('${id}')">He terminado la práctica</button></section>`;
+}
+async function handlePhoto(id,file){if(!file)return; try{await savePracticePhoto(id,file); renderExercise(id);}catch(e){alert('No se pudo guardar la fotografía.');}}
+async function removePhoto(id){await deletePracticePhoto(id);renderExercise(id);}
+function completeExercise(id){const state=loadState();saveState({completedExercises:[...new Set([...state.completedExercises,id])]});navigate('quiz',{lessonId:id,q:0,score:0});}
+
+let selectedChoice=null;
+function renderQuiz(id,qIndex=0,score=0){
+  const l=lessonById(id), questions=l?.quiz||[]; if(!l) return navigate('course');
+  if(qIndex>=questions.length){saveQuizResult(id,score,questions.length); markLessonComplete(id); const next=lessonById(loadState().currentLesson); document.getElementById('view').innerHTML=`<section class="card hero"><h2>🎉 Clase completada</h2><p><strong>${esc(l.title)}</strong></p><div class="metrics"><div class="metric"><strong>${score}/${questions.length}</strong><small>Conceptos</small></div><div class="metric"><strong>✓</strong><small>Práctica</small></div><div class="metric"><strong>${progressSummary().completed}</strong><small>Clases</small></div></div>${next&&next.id!==l.id?`<p class="muted">Siguiente: ${esc(next.title)}</p><button class="btn btn-primary" onclick="navigate('lesson',{lessonId:'${next.id}',step:0})">Continuar</button>`:`<button class="btn btn-primary" onclick="navigate('project',{projectId:'p01-llavero'})">Ir al proyecto</button>`}<button class="btn btn-ghost" onclick="navigate('home')">Volver al inicio</button></section>`; return;
+  }
+  selectedChoice=null; const q=questions[qIndex];
+  document.getElementById('view').innerHTML=`<section class="card"><small class="eyebrow">Pregunta ${qIndex+1} de ${questions.length}</small><h2>${esc(q.q)}</h2><div id="options">${q.options.map((o,i)=>`<button class="option" onclick="selectAnswer(${i})">${esc(o)}</button>`).join('')}</div><div id="quiz-feedback"></div><button id="check-answer" class="btn btn-primary" onclick="checkAnswer('${id}',${qIndex},${score})">Comprobar</button></section>`;
+}
+function selectAnswer(i){selectedChoice=i;document.querySelectorAll('.option').forEach((b,n)=>b.classList.toggle('selected',n===i));}
+function checkAnswer(id,qIndex,score){
+  if(selectedChoice===null){alert('Selecciona una respuesta.');return;}
+  const q=lessonById(id).quiz[qIndex], ok=gradeQuestion(q,selectedChoice); const fb=document.getElementById('quiz-feedback'); fb.innerHTML=`<div class="feedback ${ok?'ok':'bad'}"><strong>${ok?'✅ Correcto':'Todavía no'}</strong><br>${esc(q.feedback)}</div>`;
+  document.getElementById('check-answer').outerHTML=`<button class="btn btn-primary" onclick="navigate('quiz',{lessonId:'${id}',q:${qIndex+1},score:${score+(ok?1:0)}})">${qIndex+1===lessonById(id).quiz.length?'Terminar':'Siguiente'}</button>`;
+}
+
+function renderKnots(){
+  document.getElementById('view').innerHTML=`<input class="search" id="knot-search" placeholder="Buscar nudo…" oninput="filterKnots(this.value)"><div id="knot-list"></div>`; filterKnots('');
+}
+function filterKnots(term){
+  const list=KNOTS.filter(k=>(k.title+' '+k.englishTitle).toLowerCase().includes(term.toLowerCase()));
+  document.getElementById('knot-list').innerHTML=list.length?list.map(k=>`<section class="card">${lessonVisual(k.lessonId,4)}<span class="tag">${esc(k.difficulty)}</span><h2>${esc(k.title)}</h2><p class="muted"><em>${esc(k.englishTitle)}</em></p><p>${esc(k.summary)}</p><button class="btn btn-primary" onclick="navigate('lesson',{lessonId:'${k.lessonId}',step:0})">${lessonStatus(k.lessonId)==='completed'?'Repasar':'Aprender'} este nudo</button></section>`).join(''):`<div class="empty">No encontramos ese nudo.</div>`;
+}
+
+async function renderProgress(){
+  const p=progressSummary(), state=loadState(), photos=await listPracticePhotos();
+  document.getElementById('view').innerHTML=`<section class="card"><h2>Tu progreso</h2><div class="progress-track"><div class="progress-fill" style="width:${p.percent}%"></div></div><p><strong>${p.percent}%</strong> · ${p.completed} de ${p.total} clases</p><div class="metrics"><div class="metric"><strong>${p.knots}</strong><small>Nudos</small></div><div class="metric"><strong>${p.projects}</strong><small>Proyectos</small></div><div class="metric"><strong>${photos.length}</strong><small>Fotos</small></div></div></section><section class="card"><h3>Clases</h3>${COURSE.lessons.map(l=>`<div class="lesson-row"><div class="status-dot">${state.completedLessons.includes(l.id)?'✓':'○'}</div><div><strong>${esc(l.title)}</strong><div class="muted">${state.completedLessons.includes(l.id)?'Completada':'Pendiente'}</div></div></div>`).join('')}</section><section class="card"><h3>Mis prácticas</h3>${photos.length?photos.map(p=>`<p>📷 ${esc(lessonById(p.lessonId)?.title||p.lessonId)} <span class="muted">${new Date(p.date).toLocaleDateString('es-ES')}</span></p>`).join(''):'<div class="empty">Aún no tienes fotografías guardadas.</div>'}</section>`;
+}
+
+function renderProject(id){
+  const p=projectById(id); if(!p)return navigate('course'); const state=loadState(); const ready=p.prerequisites.every(x=>state.completedLessons.includes(x));
+  document.getElementById('view').innerHTML=`<section class="card hero"><span class="tag">${esc(p.difficulty)}</span><span class="tag">⏱ ${esc(p.duration)}</span><h2>${esc(p.title)}</h2><p class="muted">${ready?'Ya tienes las técnicas necesarias.':'Puedes verlo ahora; recomendamos completar primero las técnicas indicadas.'}</p><h3>Materiales</h3><ul>${p.materials.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><h3>Paso a paso</h3><ol>${p.steps.map(x=>`<li style="margin-bottom:8px">${esc(x)}</li>`).join('')}</ol><h3>Autoevaluación</h3><div class="checklist">${p.selfAssessment.map((x,i)=>`<label><input type="checkbox"> ${esc(x)}</label>`).join('')}</div><button class="btn btn-primary" onclick="completeProject('${p.id}')">Marcar proyecto como terminado</button></section>`;
+}
+function completeProject(id){const s=loadState();saveState({completedProjects:[...new Set([...s.completedProjects,id])]});navigate('progress');}
+
+function renderSettings(){
+  document.getElementById('view').innerHTML=`<section class="card"><h2>Ajustes</h2><h3>Privacidad</h3><p>El progreso y las fotografías se almacenan localmente en este dispositivo. No necesitas crear una cuenta.</p><h3>Reiniciar</h3><p class="muted">Esta acción elimina el progreso guardado. Las fotografías se pueden borrar desde cada práctica.</p><button class="btn btn-ghost" onclick="if(confirm('¿Reiniciar todo el progreso?')){resetState();navigate('home')}">Reiniciar progreso</button></section>`;
+}
+
+document.querySelectorAll('.nav-item').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.route)));
+document.getElementById('settings-btn').addEventListener('click',()=>navigate('settings'));
+const initial=(location.hash||'#home').slice(1);history.replaceState({route:initial,params:{}},'',location.hash||'#home');renderRoute(initial,{});
+
+  </script>
+</body>
+</html>
