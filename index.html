@@ -4,11 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#fff9f3">
-<title>Máster IA Aplicativa V2.1</title>
+
+<title>Máster IA Aplicativa V2.2</title>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
 --ink:#171724;
 --cream:#fff9f3;
@@ -24,15 +28,29 @@
 --shadow:0 16px 44px rgba(43,35,78,.10)
 }
 
-*{box-sizing:border-box}
+*{
+box-sizing:border-box
+}
 
-html{scroll-behavior:smooth}
+html{
+scroll-behavior:smooth
+}
 
 body{
 margin:0;
-background:linear-gradient(180deg,#fffaf5 0%,#f7f5ff 55%,#f7f9ff 100%);
+background:
+linear-gradient(
+180deg,
+#fffaf5 0%,
+#f7f5ff 55%,
+#f7f9ff 100%
+);
 color:var(--ink);
-font-family:Manrope,system-ui,-apple-system,sans-serif
+font-family:
+Manrope,
+system-ui,
+-apple-system,
+sans-serif
 }
 
 .app{
@@ -66,16 +84,24 @@ min-width:0
 width:42px;
 height:42px;
 border-radius:14px;
-background:linear-gradient(135deg,var(--blue),var(--pink));
+background:
+linear-gradient(
+135deg,
+var(--blue),
+var(--pink)
+);
 color:#fff;
 display:grid;
 place-items:center;
 font-size:23px;
-box-shadow:0 10px 28px rgba(91,108,255,.25);
+box-shadow:
+0 10px 28px rgba(91,108,255,.25);
 flex:0 0 auto
 }
 
-.brand-copy{min-width:0}
+.brand-copy{
+min-width:0
+}
 
 .brand-title{
 font-family:"Plus Jakarta Sans";
@@ -91,40 +117,38 @@ font-weight:700;
 color:#7c7e8d
 }
 
-.top-actions{
-display:flex;
-align-items:center;
-gap:8px
-}
-
-.save{
-opacity:0;
-pointer-events:none;
-transform:translateY(-4px);
-transition:.2s;
-font-size:12px;
-font-weight:800;
-padding:7px 10px;
-border-radius:999px;
-background:#fff;
-border:1px solid var(--line)
-}
-
-.save.show{
-opacity:1;
-transform:none
-}
-
 .profile-btn{
-width:38px;
-height:38px;
-border-radius:12px;
+width:40px;
+height:40px;
+border-radius:13px;
 border:1px solid var(--line);
 background:#fff;
 display:grid;
 place-items:center;
 cursor:pointer;
-font-size:19px
+font-size:20px
+}
+
+.save{
+opacity:0;
+pointer-events:none;
+font-size:12px;
+font-weight:800;
+padding:7px 10px;
+border-radius:999px;
+background:#fff;
+border:1px solid var(--line);
+transition:.2s
+}
+
+.save.show{
+opacity:1
+}
+
+.top-actions{
+display:flex;
+gap:8px;
+align-items:center
 }
 
 main{
@@ -133,7 +157,7 @@ padding:0 16px
 
 .screen{
 display:none;
-animation:enter .24s ease
+animation:enter .25s ease
 }
 
 .screen.active{
@@ -141,14 +165,17 @@ display:block
 }
 
 @keyframes enter{
+
 from{
 opacity:0;
 transform:translateY(8px)
 }
+
 to{
 opacity:1;
 transform:none
 }
+
 }
 
 .hero{
@@ -163,7 +190,9 @@ letter-spacing:.12em;
 color:var(--violet)
 }
 
-h1,h2,h3{
+h1,
+h2,
+h3{
 font-family:"Plus Jakarta Sans",Manrope,sans-serif;
 letter-spacing:-.035em
 }
@@ -197,7 +226,11 @@ gap:16px
 }
 
 .two{
-grid-template-columns:repeat(2,minmax(0,1fr))
+grid-template-columns:
+repeat(
+2,
+minmax(0,1fr)
+)
 }
 
 .card{
@@ -209,37 +242,67 @@ box-shadow:var(--shadow)
 }
 
 .c-blue{
-background:linear-gradient(135deg,#6677ff,#5263f4);
+background:
+linear-gradient(
+135deg,
+#6677ff,
+#5263f4
+);
 color:#fff;
 border:0
 }
 
 .c-violet{
-background:linear-gradient(135deg,#8e5cff,#af6cff);
+background:
+linear-gradient(
+135deg,
+#8e5cff,
+#af6cff
+);
 color:#fff;
 border:0
 }
 
 .c-aqua{
-background:linear-gradient(135deg,#20ccb5,#65e5d3);
+background:
+linear-gradient(
+135deg,
+#20ccb5,
+#65e5d3
+);
 color:#10231f;
 border:0
 }
 
 .c-coral{
-background:linear-gradient(135deg,#ff705d,#ff9988);
+background:
+linear-gradient(
+135deg,
+#ff705d,
+#ff9988
+);
 color:#fff;
 border:0
 }
 
 .c-yellow{
-background:linear-gradient(135deg,#ffd84a,#ffe992);
+background:
+linear-gradient(
+135deg,
+#ffd84a,
+#ffe992
+);
 color:#3b3200;
 border:0
 }
 
 .c-lime{
-background:linear-gradient(135deg,#bdf34a,#e1ff94);
+background:
+linear-gradient(
+135deg,
+#bdf34a,
+#e1ff94
+);
 color:#26310f;
 border:0
 }
@@ -262,10 +325,6 @@ justify-content:center;
 gap:8px;
 transition:.16s;
 min-height:48px
-}
-
-.btn:hover{
-transform:translateY(-1px)
 }
 
 .btn:active{
@@ -301,14 +360,19 @@ bottom:12px;
 width:min(94%,700px);
 z-index:50;
 display:grid;
-grid-template-columns:repeat(4,1fr);
+grid-template-columns:
+repeat(
+4,
+1fr
+);
 gap:4px;
 background:rgba(255,255,255,.92);
 backdrop-filter:blur(14px);
 border:1px solid var(--line);
 border-radius:24px;
 padding:7px;
-box-shadow:0 18px 55px rgba(31,28,60,.14)
+box-shadow:
+0 18px 55px rgba(31,28,60,.14)
 }
 
 .nav button{
@@ -350,7 +414,12 @@ overflow:hidden
 .progress span{
 display:block;
 height:100%;
-background:linear-gradient(90deg,var(--blue),var(--pink));
+background:
+linear-gradient(
+90deg,
+var(--blue),
+var(--pink)
+);
 transition:.35s
 }
 
@@ -369,6 +438,157 @@ font-size:12px;
 font-weight:800
 }
 
+.week-card{
+background:#fff;
+border:1px solid var(--line);
+border-radius:24px;
+padding:18px;
+box-shadow:var(--shadow)
+}
+
+.week-header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+margin-bottom:14px
+}
+
+.week-days{
+display:grid;
+grid-template-columns:
+repeat(
+7,
+1fr
+);
+gap:7px
+}
+
+.day{
+display:grid;
+place-items:center;
+gap:7px;
+padding:10px 3px;
+border-radius:16px;
+font-size:11px;
+font-weight:800;
+color:#858797
+}
+
+.day-number{
+width:34px;
+height:34px;
+border-radius:11px;
+display:grid;
+place-items:center;
+background:#f4f2f7;
+color:#626474
+}
+
+.day.today .day-number{
+outline:2px solid var(--violet)
+}
+
+.day.studied .day-number{
+background:var(--lime);
+color:#26310f
+}
+
+.goal-wrap{
+margin-top:14px
+}
+
+.goal-copy{
+display:flex;
+justify-content:space-between;
+gap:10px;
+font-size:13px;
+font-weight:800;
+margin-bottom:8px
+}
+
+.streak-number{
+font-family:"Plus Jakarta Sans";
+font-size:42px;
+font-weight:800;
+line-height:1
+}
+
+.profile-overlay{
+position:fixed;
+inset:0;
+background:rgba(23,23,36,.48);
+backdrop-filter:blur(8px);
+z-index:100;
+display:none;
+align-items:center;
+justify-content:center;
+padding:18px;
+overflow:auto
+}
+
+.profile-overlay.show{
+display:flex
+}
+
+.profile-card{
+width:min(100%,540px);
+max-height:94vh;
+overflow:auto;
+background:#fff;
+border-radius:28px;
+padding:22px;
+box-shadow:
+0 28px 80px rgba(23,23,36,.25)
+}
+
+.form-grid{
+display:grid;
+gap:13px
+}
+
+.field label{
+display:block;
+font-size:13px;
+font-weight:800;
+margin-bottom:6px
+}
+
+.field input,
+.field select{
+width:100%;
+border:1px solid var(--line);
+border-radius:16px;
+padding:14px;
+font:inherit;
+background:#fff;
+color:var(--ink)
+}
+
+.field small{
+display:block;
+color:#858797;
+margin-top:5px;
+line-height:1.4
+}
+
+.privacy{
+font-size:13px;
+color:#6d7080;
+background:#f7f5fb;
+border-radius:16px;
+padding:12px;
+line-height:1.5;
+margin-top:14px
+}
+
+.modal-actions{
+display:flex;
+gap:10px;
+justify-content:flex-end;
+margin-top:16px
+}
+
 .route{
 position:relative;
 padding-left:24px
@@ -382,7 +602,8 @@ top:14px;
 bottom:14px;
 width:3px;
 border-radius:999px;
-background:linear-gradient(
+background:
+linear-gradient(
 180deg,
 var(--blue),
 var(--violet),
@@ -394,13 +615,8 @@ var(--yellow)
 
 .module{
 cursor:pointer;
-transition:.16s;
 position:relative;
-overflow:hidden
-}
-
-.module:hover{
-transform:translateY(-2px)
+overflow:visible
 }
 
 .module:before{
@@ -410,6 +626,7 @@ left:0;
 top:0;
 bottom:0;
 width:8px;
+border-radius:24px 0 0 24px;
 background:var(--accent,var(--blue))
 }
 
@@ -429,7 +646,7 @@ z-index:2
 width:54px;
 height:54px;
 border-radius:18px;
-background:color-mix(in srgb,var(--accent,var(--blue)) 12%,white);
+background:#f2f1f7;
 display:grid;
 place-items:center;
 font-size:28px;
@@ -534,12 +751,7 @@ border-radius:18px;
 padding:15px;
 text-align:left;
 font-weight:800;
-cursor:pointer;
-transition:.16s
-}
-
-.option:hover{
-transform:translateY(-2px)
+cursor:pointer
 }
 
 .option.correct{
@@ -555,12 +767,18 @@ animation:shake .2s ease
 }
 
 @keyframes pop{
-50%{transform:scale(1.02)}
+50%{
+transform:scale(1.02)
+}
 }
 
 @keyframes shake{
-25%{transform:translateX(-4px)}
-75%{transform:translateX(4px)}
+25%{
+transform:translateX(-4px)
+}
+75%{
+transform:translateX(4px)
+}
 }
 
 .feedback{
@@ -589,7 +807,8 @@ font-weight:800
 
 .compare{
 display:grid;
-grid-template-columns:1fr 1fr;
+grid-template-columns:
+1fr 1fr;
 gap:12px;
 margin-top:18px
 }
@@ -657,7 +876,7 @@ cursor:pointer
 display:flex;
 flex-direction:column;
 gap:10px;
-min-height:260px;
+min-height:220px;
 margin-top:18px
 }
 
@@ -696,24 +915,24 @@ padding:14px;
 min-width:0
 }
 
-.insight-mini{
-display:grid;
-grid-template-columns:auto 1fr;
-gap:12px;
-align-items:start;
-background:#fff7cc;
-border-radius:18px;
-padding:14px;
-margin-top:14px
-}
-
-.insight-mini i{
-font-size:24px
+.status-pill{
+display:inline-flex;
+align-items:center;
+gap:6px;
+padding:7px 10px;
+border-radius:999px;
+background:#f1eff6;
+font-size:12px;
+font-weight:800
 }
 
 .metric-grid{
 display:grid;
-grid-template-columns:repeat(2,minmax(0,1fr));
+grid-template-columns:
+repeat(
+2,
+minmax(0,1fr)
+);
 gap:12px
 }
 
@@ -739,109 +958,13 @@ font-weight:800;
 margin-top:4px
 }
 
-.status-pill{
-display:inline-flex;
-align-items:center;
-gap:6px;
-padding:7px 10px;
-border-radius:999px;
-background:#f1eff6;
-font-size:12px;
-font-weight:800
-}
-
-.error-list{
-display:grid;
-gap:10px;
-margin-top:12px
-}
-
-.error-item{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:12px;
-background:#fff;
-border:1px solid var(--line);
-border-radius:16px;
-padding:12px
-}
-
-.privacy{
-font-size:13px;
-color:#6d7080;
-background:#f7f5fb;
-border-radius:16px;
-padding:12px
-}
-
-.profile-overlay{
-position:fixed;
-inset:0;
-background:rgba(23,23,36,.48);
-backdrop-filter:blur(8px);
-z-index:100;
-display:none;
-align-items:center;
-justify-content:center;
-padding:18px
-}
-
-.profile-overlay.show{
-display:flex
-}
-
-.profile-card{
-width:min(100%,520px);
-background:#fff;
-border-radius:28px;
-padding:22px;
-box-shadow:0 28px 80px rgba(23,23,36,.25)
-}
-
-.profile-card h1{
-font-size:36px
-}
-
-.form-grid{
-display:grid;
-gap:12px
-}
-
-.field label{
-display:block;
-font-size:13px;
-font-weight:800;
-margin-bottom:6px
-}
-
-.field input{
-width:100%;
-border:1px solid var(--line);
-border-radius:16px;
-padding:14px;
-font:inherit;
-background:#fff
-}
-
-.field small{
-display:block;
-color:#858797;
-margin-top:4px
-}
-
-.modal-actions{
-display:flex;
-gap:10px;
-justify-content:flex-end;
-margin-top:16px
-}
-
 .toast{
 position:fixed;
 top:76px;
 left:50%;
-transform:translateX(-50%) translateY(-8px);
+transform:
+translateX(-50%)
+translateY(-8px);
 background:var(--ink);
 color:#fff;
 padding:11px 14px;
@@ -854,7 +977,9 @@ font-weight:700
 
 .toast.show{
 opacity:1;
-transform:translateX(-50%) translateY(0)
+transform:
+translateX(-50%)
+translateY(0)
 }
 
 @media(max-width:760px){
@@ -920,23 +1045,22 @@ left:8px
 left:-17px
 }
 
+.week-days{
+gap:3px
+}
+
+.day-number{
+width:30px;
+height:30px;
+font-size:12px
+}
+
 .profile-card h1{
 font-size:32px
 }
 
-.step-main h1{
-font-size:clamp(32px,9vw,44px)
 }
 
-.nav button{
-font-size:11px
-}
-
-.chat{
-min-height:180px
-}
-
-}
 </style>
 </head>
 
@@ -959,7 +1083,7 @@ Máster IA Aplicativa
 </div>
 
 <div class="brand-sub">
-V2.1 · Learning Motion UI
+V2.2 · Adaptive Learning
 </div>
 
 </div>
@@ -968,8 +1092,12 @@ V2.1 · Learning Motion UI
 
 <div class="top-actions">
 
-<div class="save" id="saveBadge">
+<div
+class="save"
+id="saveBadge">
+
 ✓ Guardado
+
 </div>
 
 <button
@@ -987,19 +1115,35 @@ aria-label="Perfil">
 
 <main>
 
-<section id="home" class="screen active"></section>
+<section
+id="home"
+class="screen active">
+</section>
 
-<section id="courses" class="screen"></section>
+<section
+id="courses"
+class="screen">
+</section>
 
-<section id="profe" class="screen"></section>
+<section
+id="profe"
+class="screen">
+</section>
 
-<section id="progress" class="screen"></section>
+<section
+id="progress"
+class="screen">
+</section>
 
-<section id="module" class="screen"></section>
+<section
+id="module"
+class="screen">
+</section>
 
-<section id="lesson" class="screen"></section>
-
-<section id="review" class="screen"></section>
+<section
+id="lesson"
+class="screen">
+</section>
 
 </main>
 
@@ -1007,31 +1151,50 @@ aria-label="Perfil">
 
 <nav class="nav">
 
-<button data-nav="home" class="active">
+<button
+data-nav="home"
+class="active">
+
 <i class="ti ti-home"></i>
+
 Home
+
 </button>
 
 <button data-nav="courses">
+
 <i class="ti ti-books"></i>
+
 Cursos
+
 </button>
 
 <button data-nav="profe">
+
 <i class="ti ti-sparkles"></i>
+
 Profe!
+
 </button>
 
 <button data-nav="progress">
+
 <i class="ti ti-chart-line"></i>
+
 Progreso
+
 </button>
 
 </nav>
 
-<div id="toast" class="toast"></div>
+<div
+id="toast"
+class="toast">
+</div>
 
-<div id="profileOverlay" class="profile-overlay">
+<div
+id="profileOverlay"
+class="profile-overlay">
 
 <div class="profile-card">
 
@@ -1044,7 +1207,7 @@ Personalicemos tu experiencia
 </h1>
 
 <p>
-Estos datos se guardan solo en este navegador para personalizar la app.
+Tus datos se utilizan para personalizar tu aprendizaje en este dispositivo.
 </p>
 
 <div class="form-grid">
@@ -1090,15 +1253,85 @@ placeholder="Ej. Barcelona">
 
 </div>
 
+<div class="field">
+
+<label>
+Email / Gmail
+</label>
+
+<input
+id="pfEmail"
+type="email"
+maxlength="100"
+placeholder="nombre@gmail.com">
+
+<small>
+Se utilizará más adelante para recordatorios y sincronización.
+</small>
+
+</div>
+
+<div class="field">
+
+<label>
+Objetivo semanal
+</label>
+
+<select id="pfGoal">
+
+<option value="2">
+2 lecciones por semana
+</option>
+
+<option value="4">
+4 lecciones por semana
+</option>
+
+<option value="7">
+7 lecciones por semana
+</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>
+Recordatorios
+</label>
+
+<select id="pfReminder">
+
+<option value="none">
+No quiero recordatorios
+</option>
+
+<option value="daily">
+Recordatorio diario
+</option>
+
+<option value="weekly">
+Recordatorio semanal
+</option>
+
+</select>
+
+<small>
+La preferencia se guarda ahora. El envío real se activará cuando conectemos notificaciones o email.
+</small>
+
+</div>
+
 </div>
 
 <div class="privacy">
 
 <i class="ti ti-lock"></i>
 
-No enviamos estos datos a ningún servidor.
-Si cambias de dispositivo o borras los datos del navegador,
-tendrás que introducirlos otra vez.
+Actualmente el perfil y el progreso se guardan solo en este navegador.
+
+No enviamos automáticamente estos datos a ningún servidor.
 
 </div>
 
@@ -1156,7 +1389,11 @@ steps:[
 t:"hook",
 title:"¿Esto es IA?",
 body:"Cuando llega un formulario, se envía automáticamente un email.",
-opts:["Sí","No","Depende"],
+opts:[
+"Sí",
+"No",
+"Depende"
+],
 a:2,
 fb:"Puede formar parte de un sistema con IA, pero ese comportamiento concreto es una automatización."
 },
@@ -1166,7 +1403,11 @@ t:"process",
 title:"Automatización",
 body:"Sigue un camino previamente definido.",
 icon:"ti ti-bolt",
-process:["Evento","Regla","Acción"]
+process:[
+"Evento",
+"Regla",
+"Acción"
+]
 },
 
 {
@@ -1411,7 +1652,10 @@ steps:[
 t:"hook",
 title:"¿IA para todo?",
 body:"¿La herramienta más avanzada siempre es la mejor?",
-opts:["Sí","No"],
+opts:[
+"Sí",
+"No"
+],
 a:1,
 fb:"No. La mejor herramienta es la que resuelve mejor el problema."
 },
@@ -1420,10 +1664,22 @@ fb:"No. La mejor herramienta es la que resuelve mejor el problema."
 t:"match",
 title:"Haz el matching",
 pairs:[
-["Precio actual","Search"],
-["Geometría paramétrica","CAD"],
-["Confirmación tras formulario","Automatización"],
-["Comprender un concepto","Chat"]
+[
+"Precio actual",
+"Search"
+],
+[
+"Geometría paramétrica",
+"CAD"
+],
+[
+"Confirmación tras formulario",
+"Automatización"
+],
+[
+"Comprender un concepto",
+"Chat"
+]
 ]
 },
 
@@ -1652,9 +1908,18 @@ steps:[
 t:"match",
 title:"Elige el formato",
 pairs:[
-["Comparar materiales","Tabla"],
-["Enviar datos a otro sistema","JSON"],
-["Seguir un procedimiento","Checklist"]
+[
+"Comparar materiales",
+"Tabla"
+],
+[
+"Enviar datos a otro sistema",
+"JSON"
+],
+[
+"Seguir un procedimiento",
+"Checklist"
+]
 ]
 },
 
@@ -1847,78 +2112,153 @@ lessons:[]
 
 ];
 
-const KEY="master_ia_v21";
+const KEY=
+"master_ia_v22";
 
 const DEFAULT={
+
 profile:{
 name:"",
 age:"",
-city:""
+city:"",
+email:"",
+weeklyGoal:4,
+reminder:"none"
 },
+
 currentModule:"m1",
+
 currentLesson:"m1l1",
+
 step:0,
+
 completed:[],
+
 answers:{},
+
 builder:{},
+
 errors:{},
+
 mastery:{},
+
+reviewQueue:[],
+
 chat:[],
-lastVisit:null,
-reviewQueue:[]
+
+studyDays:[],
+
+lessonCompletedAt:{},
+
+lastVisit:null
+
 };
 
-let S=Object.assign(
-{},
-DEFAULT,
+let stored={};
+
+try{
+
+stored=
 JSON.parse(
-localStorage.getItem(KEY)||"{}"
+localStorage.getItem(
+KEY
 )
+||
+"{}"
 );
 
-S.profile=Object.assign(
+}
+catch(error){
+
+stored={};
+
+}
+
+let S=
+Object.assign(
+{},
+DEFAULT,
+stored
+);
+
+S.profile=
+Object.assign(
 {},
 DEFAULT.profile,
 S.profile||{}
 );
 
-S.errors=S.errors||{};
-S.mastery=S.mastery||{};
-S.reviewQueue=S.reviewQueue||[];
+S.completed=
+S.completed||[];
 
-const $=s=>
-document.querySelector(s);
+S.answers=
+S.answers||{};
 
-const $$=s=>[
-...document.querySelectorAll(s)
+S.builder=
+S.builder||{};
+
+S.errors=
+S.errors||{};
+
+S.mastery=
+S.mastery||{};
+
+S.reviewQueue=
+S.reviewQueue||[];
+
+S.chat=
+S.chat||[];
+
+S.studyDays=
+S.studyDays||[];
+
+S.lessonCompletedAt=
+S.lessonCompletedAt||{};
+
+const $=
+selector=>
+document.querySelector(
+selector
+);
+
+const $$=
+selector=>[
+...document.querySelectorAll(
+selector
+)
 ];
 
 function save(){
 
-S.lastVisit=Date.now();
+S.lastVisit=
+Date.now();
 
 localStorage.setItem(
 KEY,
-JSON.stringify(S)
+JSON.stringify(
+S
+)
 );
 
-const element=
+const badge=
 $("#saveBadge");
 
-element.classList.add(
+badge.classList.add(
 "show"
 );
 
 clearTimeout(
-window.__saveT
+window.__saveTimer
 );
 
-window.__saveT=
+window.__saveTimer=
 setTimeout(
 ()=>{
-element.classList.remove(
+
+badge.classList.remove(
 "show"
 );
+
 },
 1200
 );
@@ -1930,7 +2270,8 @@ function toast(text){
 const element=
 $("#toast");
 
-element.textContent=text;
+element.textContent=
+text;
 
 element.classList.add(
 "show"
@@ -1938,11 +2279,13 @@ element.classList.add(
 
 setTimeout(
 ()=>{
+
 element.classList.remove(
 "show"
 );
+
 },
-1500
+1600
 );
 
 }
@@ -1976,7 +2319,7 @@ behavior:"smooth"
 }
 
 $$(".nav button").forEach(
-button=>
+button=>{
 
 button.onclick=
 ()=>{
@@ -1989,8 +2332,9 @@ show(
 button.dataset.nav
 );
 
-}
+};
 
+}
 );
 
 function allLessons(){
@@ -2021,46 +2365,6 @@ allLessons()[0];
 
 }
 
-function mp(module){
-
-return module.lessons.length
-?
-Math.round(
-module.lessons.filter(
-lesson=>
-S.completed.includes(
-lesson.id
-)
-).length
-/
-module.lessons.length
-*
-100
-)
-:
-0;
-
-}
-
-function total(){
-
-const lessons=
-allLessons();
-
-return lessons.length
-?
-Math.round(
-S.completed.length
-/
-lessons.length
-*
-100
-)
-:
-0;
-
-}
-
 function firstName(){
 
 return (
@@ -2069,7 +2373,338 @@ S.profile.name||""
 .trim()
 .split(/\s+/)[0]
 ||
-"Hola";
+"";
+
+}
+
+function moduleProgress(module){
+
+if(
+!module.lessons.length
+){
+return 0;
+}
+
+return Math.round(
+
+module.lessons.filter(
+lesson=>
+S.completed.includes(
+lesson.id
+)
+).length
+
+/
+
+module.lessons.length
+
+*
+
+100
+
+);
+
+}
+
+function totalProgress(){
+
+const lessons=
+allLessons();
+
+if(
+!lessons.length
+){
+return 0;
+}
+
+return Math.round(
+S.completed.length
+/
+lessons.length
+*
+100
+);
+
+}
+
+function todayKey(date=new Date()){
+
+return [
+date.getFullYear(),
+String(
+date.getMonth()+1
+).padStart(
+2,
+"0"
+),
+String(
+date.getDate()
+).padStart(
+2,
+"0"
+)
+].join(
+"-"
+);
+
+}
+
+function markStudyDay(){
+
+const today=
+todayKey();
+
+if(
+!S.studyDays.includes(
+today
+)
+){
+
+S.studyDays.push(
+today
+);
+
+}
+
+}
+
+function startOfWeek(date=new Date()){
+
+const copy=
+new Date(
+date
+);
+
+const day=
+copy.getDay();
+
+const diff=
+day===0
+?
+-6
+:
+1-day;
+
+copy.setDate(
+copy.getDate()+diff
+);
+
+copy.setHours(
+0,
+0,
+0,
+0
+);
+
+return copy;
+
+}
+
+function weekDates(){
+
+const start=
+startOfWeek();
+
+return Array.from(
+{
+length:7
+},
+(_,index)=>{
+
+const date=
+new Date(
+start
+);
+
+date.setDate(
+start.getDate()+index
+);
+
+return date;
+
+}
+);
+
+}
+
+function weeklyCompleted(){
+
+const start=
+startOfWeek();
+
+const end=
+new Date(
+start
+);
+
+end.setDate(
+start.getDate()+7
+);
+
+return Object.values(
+S.lessonCompletedAt
+).filter(
+timestamp=>{
+
+const date=
+new Date(
+timestamp
+);
+
+return (
+date>=start
+&&
+date<end
+);
+
+}
+).length;
+
+}
+
+function weeklyGoal(){
+
+return Number(
+S.profile.weeklyGoal
+||
+4
+);
+
+}
+
+function streak(){
+
+const set=
+new Set(
+S.studyDays
+);
+
+if(
+!set.size
+){
+return 0;
+}
+
+let cursor=
+new Date();
+
+cursor.setHours(
+0,
+0,
+0,
+0
+);
+
+if(
+!set.has(
+todayKey(
+cursor
+)
+)
+){
+
+cursor.setDate(
+cursor.getDate()-1
+);
+
+}
+
+let count=0;
+
+while(
+set.has(
+todayKey(
+cursor
+)
+)
+){
+
+count++;
+
+cursor.setDate(
+cursor.getDate()-1
+);
+
+}
+
+return count;
+
+}
+
+function renderCalendar(){
+
+const names=[
+"L",
+"M",
+"X",
+"J",
+"V",
+"S",
+"D"
+];
+
+const today=
+todayKey();
+
+return `
+
+<div class="week-days">
+
+${weekDates().map(
+
+(date,index)=>{
+
+const key=
+todayKey(
+date
+);
+
+const classes=[
+"day"
+];
+
+if(
+key===today
+){
+classes.push(
+"today"
+);
+}
+
+if(
+S.studyDays.includes(
+key
+)
+){
+classes.push(
+"studied"
+);
+}
+
+return `
+
+<div
+class="${classes.join(" ")}">
+
+<span>
+${names[index]}
+</span>
+
+<div class="day-number">
+${date.getDate()}
+</div>
+
+</div>
+
+`;
+
+}
+
+).join("")}
+
+</div>
+
+`;
 
 }
 
@@ -2090,6 +2725,17 @@ S.profile.age||"";
 
 $("#pfCity").value=
 S.profile.city||"";
+
+$("#pfEmail").value=
+S.profile.email||"";
+
+$("#pfGoal").value=
+String(
+S.profile.weeklyGoal||4
+);
+
+$("#pfReminder").value=
+S.profile.reminder||"none";
 
 $("#profileCancel").style.display=
 edit
@@ -2118,6 +2764,20 @@ $("#profileOverlay").classList.remove(
 
 }
 
+function validEmail(email){
+
+if(
+!email
+){
+return true;
+}
+
+return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+email
+);
+
+}
+
 function saveProfile(){
 
 const name=
@@ -2128,6 +2788,17 @@ $("#pfAge").value.trim();
 
 const city=
 $("#pfCity").value.trim();
+
+const email=
+$("#pfEmail").value.trim();
+
+const weeklyGoal=
+Number(
+$("#pfGoal").value
+);
+
+const reminder=
+$("#pfReminder").value;
 
 if(
 !name
@@ -2141,10 +2812,34 @@ return;
 
 }
 
+if(
+!validEmail(
+email
+)
+){
+
+toast(
+"Revisa el correo electrónico"
+);
+
+return;
+
+}
+
 S.profile={
+
 name,
+
 age,
-city
+
+city,
+
+email,
+
+weeklyGoal,
+
+reminder
+
 };
 
 save();
@@ -2156,7 +2851,7 @@ $("#profileOverlay").classList.remove(
 renderHome();
 
 toast(
-"Perfil guardado ✓"
+"Perfil actualizado ✓"
 );
 
 }
@@ -2176,144 +2871,6 @@ setTimeout(
 
 }
 
-function skillEvidence(skill){
-
-let score=0;
-
-allLessons().forEach(
-lesson=>
-
-lesson.steps.forEach(
-step=>{
-
-if(
-step.skill===skill
-&&
-S.completed.includes(
-lesson.id
-)
-){
-
-score+=1;
-
-}
-
-}
-)
-
-);
-
-return score;
-
-}
-
-function masteryState(skill){
-
-const evidence=
-skillEvidence(skill);
-
-const err=
-Object.entries(
-S.errors
-)
-.filter(
-([key])=>
-key.includes(skill)
-)
-.reduce(
-(total,[,value])=>
-total+value,
-0
-);
-
-if(
-!evidence
-){
-return "Sin evaluar";
-}
-
-if(
-err>=2
-){
-return "Revisar";
-}
-
-if(
-evidence>=2
-){
-return "Comprendido";
-}
-
-return "En progreso";
-
-}
-
-function recordError(
-step,
-lesson
-){
-
-const concept=
-step.skill
-||
-step.title
-||
-lesson.title;
-
-S.errors[concept]=
-(
-S.errors[concept]||0
-)
-+
-1;
-
-if(
-!S.reviewQueue.includes(
-concept
-)
-){
-
-S.reviewQueue.push(
-concept
-);
-
-}
-
-}
-
-function recordSuccess(
-step,
-lesson
-){
-
-const concept=
-step.skill
-||
-step.title
-||
-lesson.title;
-
-S.mastery[concept]=
-(
-S.mastery[concept]||0
-)
-+
-1;
-
-if(
-(
-S.errors[concept]||0
-)
->
-0
-){
-
-S.errors[concept]-=1;
-
-}
-
-}
-
 function renderHome(){
 
 const lesson=
@@ -2326,9 +2883,23 @@ item.id===lesson.moduleId
 );
 
 const progress=
-total();
+totalProgress();
 
-const name=
+const week=
+weeklyCompleted();
+
+const goal=
+weeklyGoal();
+
+const goalPercent=
+Math.min(
+100,
+Math.round(
+week/goal*100
+)
+);
+
+const user=
 firstName();
 
 $("#home").innerHTML=`
@@ -2342,9 +2913,9 @@ Tu sesión
 <h1>
 
 ${
-S.profile.name
+user
 ?
-`Hola, ${name}.`
+`Hola, ${user}.`
 :
 "Hola."
 }
@@ -2394,6 +2965,7 @@ ${module.desc}
 <div class="lesson-progress">
 
 ${lesson.steps.map(
+
 (_,index)=>`
 
 <span
@@ -2413,6 +2985,7 @@ index===S.step
 </span>
 
 `
+
 ).join("")}
 
 </div>
@@ -2447,7 +3020,13 @@ ${progress}%
 
 <p style="color:inherit">
 
-Lecciones completadas
+${S.completed.length}
+
+de
+
+${allLessons().length}
+
+lecciones
 
 </p>
 
@@ -2459,28 +3038,81 @@ Lecciones completadas
 class="eyebrow"
 style="color:inherit">
 
-Repaso inteligente
+Racha
 
 </div>
 
-<h2>
+<div class="streak-number">
 
-${S.reviewQueue.length||0}
+🔥 ${streak()}
 
-pendiente${S.reviewQueue.length===1?"":"s"}
+</div>
 
-</h2>
+<p style="color:inherit">
 
-<button
-class="btn white"
-onclick="
-renderReview();
-show('review');
-">
+${
+streak()===1
+?
+"día aprendiendo"
+:
+"días aprendiendo"
+}
 
-Repasar ahora
+</p>
 
-</button>
+</div>
+
+</div>
+
+<div class="week-card">
+
+<div class="week-header">
+
+<div>
+
+<div class="eyebrow">
+Esta semana
+</div>
+
+<h3>
+Tu ritmo de aprendizaje
+</h3>
+
+</div>
+
+<span class="status-pill">
+
+${week}/${goal}
+
+lecciones
+
+</span>
+
+</div>
+
+${renderCalendar()}
+
+<div class="goal-wrap">
+
+<div class="goal-copy">
+
+<span>
+Objetivo semanal
+</span>
+
+<span>
+${goalPercent}%
+</span>
+
+</div>
+
+<div class="progress">
+
+<span
+style="width:${goalPercent}%">
+</span>
+
+</div>
 
 </div>
 
@@ -2492,21 +3124,27 @@ Repasar ahora
 class="eyebrow"
 style="color:inherit">
 
-Dominio
+Siguiente objetivo
 
 </div>
 
-<h3>
+<h2>
 
 ${
-S.completed.length
+week>=goal
 ?
-"Tu dominio se calcula con evidencia, no solo con completar pantallas."
+"¡Objetivo semanal conseguido!"
 :
-"Aún no hay suficiente evidencia para evaluar tu dominio."
+`Te faltan ${goal-week} lección${
+goal-week===1
+?
+""
+:
+"es"
+} esta semana`
 }
 
-</h3>
+</h2>
 
 </div>
 
@@ -2544,32 +3182,48 @@ module=>`
 
 <div
 class="card module"
-style="--accent:${module.color}"
-onclick="openModule('${module.id}')">
+style="
+--accent:${module.color}
+"
+onclick="
+openModule(
+'${module.id}'
+);
+">
 
-<span class="route-dot"></span>
+<span class="route-dot">
+</span>
 
 <div class="row">
 
 <div class="iconbox">
 
-<i class="${module.icon}"></i>
+<i class="${module.icon}">
+</i>
 
 </div>
 
 <div
-style="text-align:right">
+style="
+text-align:right
+">
 
 <div
 class="eyebrow"
-style="color:${module.color}">
+style="
+color:${module.color}
+">
 
 ${module.n}
 
 </div>
 
 <b>
-${mp(module)}%
+
+${moduleProgress(
+module
+)}%
+
 </b>
 
 </div>
@@ -2602,7 +3256,9 @@ ${skill}
 
 <span
 style="
-width:${mp(module)}%
+width:${moduleProgress(
+module
+)}%
 ">
 </span>
 
@@ -2622,7 +3278,8 @@ width:${mp(module)}%
 
 function openModule(id){
 
-S.currentModule=id;
+S.currentModule=
+id;
 
 save();
 
@@ -2641,7 +3298,8 @@ renderCourses();
 show('courses');
 ">
 
-<i class="ti ti-arrow-left"></i>
+<i class="ti ti-arrow-left">
+</i>
 
 Cursos
 
@@ -2651,7 +3309,9 @@ Cursos
 
 <div
 class="eyebrow"
-style="color:${module.color}">
+style="
+color:${module.color}
+">
 
 Módulo ${module.n}
 
@@ -2676,18 +3336,26 @@ Progreso
 </b>
 
 <b>
-${mp(module)}%
+
+${moduleProgress(
+module
+)}%
+
 </b>
 
 </div>
 
 <div
 class="progress"
-style="margin-top:10px">
+style="
+margin-top:10px
+">
 
 <span
 style="
-width:${mp(module)}%
+width:${moduleProgress(
+module
+)}%
 ">
 </span>
 
@@ -2695,7 +3363,8 @@ width:${mp(module)}%
 
 </div>
 
-<div style="height:12px"></div>
+<div style="height:12px">
+</div>
 
 ${
 module.lessons.length
@@ -2759,7 +3428,8 @@ ${lesson.duration} min
 
 </div>
 
-<i class="ti ti-chevron-right"></i>
+<i class="ti ti-chevron-right">
+</i>
 
 </div>
 
@@ -2778,7 +3448,9 @@ Diseñado, aún no cargado
 </h2>
 
 <p style="color:inherit">
-Se integrará después de validar esta V2.1.
+
+Se integrará después de validar esta versión.
+
 </p>
 
 </div>
@@ -2799,9 +3471,11 @@ id,
 step=0
 ){
 
-S.currentLesson=id;
+S.currentLesson=
+id;
 
-S.step=step;
+S.step=
+step;
 
 const lesson=
 CL();
@@ -2869,7 +3543,9 @@ let html=`
 
 <div
 class="eyebrow"
-style="color:inherit">
+style="
+color:inherit
+">
 
 ${step.t}
 
@@ -2909,7 +3585,8 @@ html+=`
 
 <div class="step-icon">
 
-<i class="${step.icon}"></i>
+<i class="${step.icon}">
+</i>
 
 </div>
 
@@ -2978,7 +3655,11 @@ index===step.a
 ""
 }
 "
-onclick="answer(${index})">
+onclick="
+answer(
+${index}
+);
+">
 
 ${option}
 
@@ -3030,7 +3711,9 @@ html+=`
 ${step.left[0]}
 </b>
 
-${step.left.slice(1).map(
+${step.left.slice(
+1
+).map(
 item=>`
 
 <p style="color:inherit">
@@ -3048,7 +3731,9 @@ ${item}
 ${step.right[0]}
 </b>
 
-${step.right.slice(1).map(
+${step.right.slice(
+1
+).map(
 item=>`
 
 <p style="color:inherit">
@@ -3071,12 +3756,16 @@ step.choices
 ){
 
 const selected=
-S.builder[key]||[];
+S.builder[key]
+||
+[];
 
 html+=`
 
 <div
-style="margin-top:14px">
+style="
+margin-top:14px
+">
 
 ${step.choices.map(
 
@@ -3095,7 +3784,11 @@ index
 ""
 }
 "
-onclick="toggle(${index})">
+onclick="
+toggle(
+${index}
+);
+">
 
 ${item}
 
@@ -3106,39 +3799,6 @@ ${item}
 ).join("")}
 
 </div>
-
-${
-selected.length
-?
-`
-
-<div class="feedback">
-
-${
-JSON.stringify(
-[
-...selected
-].sort()
-)
-===
-JSON.stringify(
-[
-...step.correct
-].sort()
-)
-
-?
-"✓ Buena selección."
-:
-"Sigue afinando la selección."
-}
-
-</div>
-
-`
-:
-""
-}
 
 `;
 
@@ -3186,7 +3846,8 @@ html+=`
 
 <div class="feedback">
 
-<i class="ti ti-sparkles"></i>
+<i class="ti ti-sparkles">
+</i>
 
 Skill:
 
@@ -3222,7 +3883,8 @@ onclick="nextStep()">
 
 Continuar
 
-<i class="ti ti-arrow-right"></i>
+<i class="ti ti-arrow-right">
+</i>
 
 </button>
 
@@ -3238,7 +3900,8 @@ onclick="finishLesson()">
 
 Completar lección
 
-<i class="ti ti-circle-check"></i>
+<i class="ti ti-circle-check">
+</i>
 
 </button>
 
@@ -3256,7 +3919,9 @@ return `
 class="
 card
 step-card
-c-${accent(step.t)}
+c-${accent(
+step.t
+)}
 ">
 
 ${html}
@@ -3295,7 +3960,8 @@ openModule(
 );
 ">
 
-<i class="ti ti-arrow-left"></i>
+<i class="ti ti-arrow-left">
+</i>
 
 ${module.title}
 
@@ -3336,7 +4002,9 @@ lesson
 
 <div
 class="row"
-style="margin-top:12px">
+style="
+margin-top:12px
+">
 
 <button
 class="btn outline"
@@ -3351,7 +4019,8 @@ S.step===0
 
 onclick="prevStep()">
 
-<i class="ti ti-arrow-left"></i>
+<i class="ti ti-arrow-left">
+</i>
 
 Atrás
 
@@ -3363,7 +4032,11 @@ font-size:13px;
 color:#7d7f8f
 ">
 
-${S.step+1}/${lesson.steps.length}
+${S.step+1}
+
+/
+
+${lesson.steps.length}
 
 </span>
 
@@ -3396,21 +4069,34 @@ S.answers[key]=
 index;
 
 if(
-index===step.a
+index!==step.a
 ){
 
-recordSuccess(
-step,
-lesson
+const concept=
+step.title
+||
+lesson.title;
+
+S.errors[concept]=
+(
+S.errors[concept]
+||
+0
+)
++
+1;
+
+if(
+!S.reviewQueue.includes(
+concept
+)
+){
+
+S.reviewQueue.push(
+concept
 );
 
 }
-else{
-
-recordError(
-step,
-lesson
-);
 
 }
 
@@ -3424,11 +4110,6 @@ function toggle(index){
 
 const lesson=
 CL();
-
-const step=
-lesson.steps[
-S.step
-];
 
 const key=
 lesson.id
@@ -3456,35 +4137,6 @@ item!==index
 ...current,
 index
 ];
-
-const now=
-S.builder[key];
-
-const ok=
-JSON.stringify(
-[
-...now
-].sort()
-)
-===
-JSON.stringify(
-[
-...(
-step.correct||[]
-)
-].sort()
-);
-
-if(
-ok
-){
-
-recordSuccess(
-step,
-lesson
-);
-
-}
 
 save();
 
@@ -3528,28 +4180,40 @@ function finishLesson(){
 const lesson=
 CL();
 
-if(
+const firstCompletion=
 !S.completed.includes(
 lesson.id
-)
+);
+
+if(
+firstCompletion
 ){
 
 S.completed.push(
 lesson.id
 );
 
+S.lessonCompletedAt[
+lesson.id
+]=
+Date.now();
+
+markStudyDay();
+
 }
 
 save();
 
 toast(
+
 `Muy bien${
-S.profile.name
+firstName()
 ?
 ", "+firstName()
 :
 ""
 }. Lección completada ✓`
+
 );
 
 renderProgress();
@@ -3602,7 +4266,9 @@ ${lesson.title}
 
 <div
 class="eyebrow"
-style="color:inherit">
+style="
+color:inherit
+">
 
 Contexto actual
 
@@ -3624,7 +4290,8 @@ step.body
 
 </div>
 
-<div style="height:12px"></div>
+<div style="height:12px">
+</div>
 
 <div class="quick">
 
@@ -3674,31 +4341,6 @@ Hazme practicar
 
 </div>
 
-<div class="insight-mini">
-
-<i class="ti ti-bulb"></i>
-
-<div>
-
-<b>
-Consejo de estudio
-</b>
-
-<p
-style="
-margin:4px 0 0
-">
-
-No memorices la respuesta:
-intenta explicar con tus palabras
-por qué una opción es mejor que otra.
-
-</p>
-
-</div>
-
-</div>
-
 <div class="chat">
 
 ${
@@ -3710,7 +4352,8 @@ S.chat
 [
 {
 role:"assistant",
-text:`${firstName()}, puedo explicarte este punto, darte una pista o proponerte un caso nuevo.`
+text:
+`${firstName()||"Hola"}, puedo explicarte este punto, darte una pista o proponerte un caso nuevo.`
 }
 ]
 ).map(
@@ -3746,7 +4389,8 @@ toast(
 );
 ">
 
-<i class="ti ti-paperclip"></i>
+<i class="ti ti-paperclip">
+</i>
 
 </button>
 
@@ -3758,7 +4402,8 @@ placeholder="Pregunta sobre tu lección...">
 class="btn primary"
 onclick="send()">
 
-<i class="ti ti-send"></i>
+<i class="ti ti-send">
+</i>
 
 </button>
 
@@ -3773,7 +4418,9 @@ function escapeHtml(text){
 return String(
 text
 ).replace(
+
 /[&<>"']/g,
+
 character=>(
 {
 "&":"&amp;",
@@ -3783,6 +4430,7 @@ character=>(
 "'":"&#039;"
 }
 )[character]
+
 );
 
 }
@@ -3871,7 +4519,7 @@ normalized.includes(
 ){
 
 response=
-"Reto: crea un ejemplo donde una regla fija sea suficiente y otro donde haga falta decidir entre alternativas.";
+"Reto: crea un ejemplo donde una regla fija sea suficiente y otro donde haga falta tomar una decisión.";
 
 }
 else{
@@ -3899,32 +4547,20 @@ renderProfe();
 function renderProgress(){
 
 const progress=
-total();
+totalProgress();
 
-const skills=[
-...new Set(
-MODULES.flatMap(
-module=>
-module.skills
-)
-)
-];
+const week=
+weeklyCompleted();
 
-const errors=
-Object.entries(
-S.errors
+const goal=
+weeklyGoal();
+
+const goalPercent=
+Math.min(
+100,
+Math.round(
+week/goal*100
 )
-.filter(
-([,value])=>
-value>0
-)
-.sort(
-(a,b)=>
-b[1]-a[1]
-)
-.slice(
-0,
-5
 );
 
 $("#progress").innerHTML=`
@@ -3940,8 +4576,11 @@ ${progress}% completado
 </h1>
 
 <p>
+
 Completar no es lo mismo que dominar.
-El dominio se muestra solo cuando hay evidencia.
+
+Tu progreso muestra actividad real.
+
 </p>
 
 </div>
@@ -3969,6 +4608,34 @@ ${allLessons().length}
 <div class="metric">
 
 <div class="label">
+Racha actual
+</div>
+
+<div class="value">
+
+🔥 ${streak()}
+
+</div>
+
+</div>
+
+<div class="metric">
+
+<div class="label">
+Esta semana
+</div>
+
+<div class="value">
+
+${week}/${goal}
+
+</div>
+
+</div>
+
+<div class="metric">
+
+<div class="label">
 Conceptos para repasar
 </div>
 
@@ -3982,102 +4649,114 @@ ${S.reviewQueue.length}
 
 </div>
 
-<div style="height:14px"></div>
-
-<div class="card">
-
-<div class="eyebrow">
-AI Fluency
+<div style="height:14px">
 </div>
 
-<h2>
-Estado por evidencia
-</h2>
+<div class="week-card">
 
-<div class="chips">
+<div class="week-header">
 
-${skills.slice(
-0,
-8
-).map(
+<div>
 
-skill=>`
+<div class="eyebrow">
+Calendario
+</div>
+
+<h3>
+Actividad semanal
+</h3>
+
+</div>
 
 <span class="status-pill">
 
-${skill}:
-
-${masteryState(
-skill
-)}
+${goalPercent}%
 
 </span>
 
-`
+</div>
 
-).join("")}
+${renderCalendar()}
+
+<div class="goal-wrap">
+
+<div class="goal-copy">
+
+<span>
+Objetivo semanal
+</span>
+
+<span>
+${week}/${goal}
+</span>
+
+</div>
+
+<div class="progress">
+
+<span
+style="
+width:${goalPercent}%
+">
+</span>
 
 </div>
 
 </div>
 
-<div style="height:14px"></div>
+</div>
+
+<div style="height:14px">
+</div>
 
 <div class="card">
 
 <div class="eyebrow">
-Errores detectados
+Recordatorios
 </div>
+
+<h2>
 
 ${
-errors.length
+S.profile.reminder==="daily"
 ?
-`
-
-<div class="error-list">
-
-${errors.map(
-
-([concept,count])=>`
-
-<div class="error-item">
-
-<span>
-${concept}
-</span>
-
-<b>
-${count}
-</b>
-
-</div>
-
-`
-
-).join("")}
-
-</div>
-
-`
+"Diario"
 :
-`
-
-<p>
-Aún no hay errores registrados.
-</p>
-
-`
+S.profile.reminder==="weekly"
+?
+"Semanal"
+:
+"Desactivados"
 }
 
+</h2>
+
+<p>
+
+${
+S.profile.email
+?
+`Correo registrado: ${escapeHtml(
+S.profile.email
+)}`
+:
+"Puedes añadir un correo desde tu perfil."
+}
+
+</p>
+
 </div>
 
-<div style="height:14px"></div>
+<div style="height:14px">
+</div>
 
 <div class="card c-yellow">
 
 <div
 class="eyebrow"
-style="color:inherit">
+style="
+color:inherit
+">
 
 Recomendado
 
@@ -4086,9 +4765,9 @@ Recomendado
 <h2>
 
 ${
-S.reviewQueue.length
+week>=goal
 ?
-"Haz un repaso corto de tus errores"
+"Objetivo semanal completado"
 :
 "Continúa con tu ruta actual"
 }
@@ -4098,178 +4777,17 @@ S.reviewQueue.length
 <button
 class="btn white"
 onclick="
-${
-S.reviewQueue.length
-?
-"renderReview();show('review')"
-:
-"renderHome();show('home')"
-}
+renderHome();
+show('home');
 ">
 
-${
-S.reviewQueue.length
-?
-"Repasar ahora"
-:
-"Ir a mi sesión"
-}
+Ir a mi sesión
 
 </button>
 
 </div>
 
 `;
-
-}
-
-function renderReview(){
-
-const items=
-S.reviewQueue.slice(
-0,
-6
-);
-
-$("#review").innerHTML=`
-
-<span
-class="back"
-onclick="
-renderProgress();
-show('progress');
-">
-
-<i class="ti ti-arrow-left"></i>
-
-Progreso
-
-</span>
-
-<div class="hero">
-
-<div class="eyebrow">
-Repaso inteligente
-</div>
-
-<h1>
-Refuerza lo que te costó.
-</h1>
-
-<p>
-Esta lista se genera a partir de tus errores reales.
-</p>
-
-</div>
-
-${
-items.length
-?
-`
-
-<div class="grid">
-
-${items.map(
-
-(item,index)=>`
-
-<div class="card">
-
-<div class="row">
-
-<div>
-
-<div class="eyebrow">
-
-Repaso ${index+1}
-
-</div>
-
-<h3>
-${item}
-</h3>
-
-</div>
-
-<button
-class="btn soft"
-onclick="
-markReviewed(
-'${escapeJs(item)}'
-);
-">
-
-Repasado ✓
-
-</button>
-
-</div>
-
-</div>
-
-`
-
-).join("")}
-
-</div>
-
-`
-:
-`
-
-<div class="card c-lime">
-
-<h2>
-No tienes repasos pendientes.
-</h2>
-
-<p style="color:inherit">
-
-Sigue aprendiendo y esta sección
-se adaptará automáticamente.
-
-</p>
-
-</div>
-
-`
-}
-
-`;
-
-}
-
-function escapeJs(text){
-
-return String(
-text
-)
-.replace(
-/\\/g,
-"\\\\"
-)
-.replace(
-/'/g,
-"\\'"
-);
-
-}
-
-function markReviewed(item){
-
-S.reviewQueue=
-S.reviewQueue.filter(
-value=>
-value!==item
-);
-
-save();
-
-renderReview();
-
-toast(
-"Repaso marcado ✓"
-);
 
 }
 
@@ -4301,50 +4819,6 @@ renderProgress();
 
 }
 
-function runQA(){
-
-const errors=[];
-
-if(
-!$("#home")
-||
-!$("#courses")
-||
-!$("#profe")
-||
-!$("#progress")
-){
-
-errors.push(
-"Pantallas principales"
-);
-
-}
-
-if(
-!allLessons().length
-){
-
-errors.push(
-"Lecciones"
-);
-
-}
-
-if(
-typeof localStorage==="undefined"
-){
-
-errors.push(
-"Persistencia"
-);
-
-}
-
-return errors;
-
-}
-
 renderHome();
 
 renderCourses();
@@ -4355,29 +4829,7 @@ renderProgress();
 
 ensureProfile();
 
-const qa=
-runQA();
-
-if(
-qa.length
-){
-
-console.warn(
-"QA:",
-qa
-);
-
-}
-else{
-
-console.info(
-"QA básico V2.1: OK"
-);
-
-}
-
 </script>
 
 </body>
-
 </html>
