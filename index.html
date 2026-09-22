@@ -1,0 +1,3352 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fffaf5">
+
+<title>Máster IA Aplicativa · Nueva Base</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --ink:#171724;
+  --muted:#737586;
+  --cream:#fffaf5;
+  --paper:#ffffff;
+  --line:#e8e5ef;
+
+  --blue:#596cff;
+  --violet:#8b5cf6;
+  --aqua:#23cdb6;
+  --lime:#bdf34a;
+  --yellow:#ffd84a;
+  --coral:#ff715f;
+  --pink:#ff6ab4;
+
+  --shadow:0 18px 44px rgba(34,28,68,.10);
+
+  --safe-bottom:max(18px,env(safe-area-inset-bottom));
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  color:var(--ink);
+  background:
+    linear-gradient(
+      180deg,
+      #fffaf5 0%,
+      #f8f6ff 58%,
+      #f7f9ff 100%
+    );
+  font-family:
+    Manrope,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+button,
+input{
+  font:inherit;
+}
+
+button{
+  -webkit-tap-highlight-color:transparent;
+}
+
+.app{
+  width:min(100%,480px);
+  margin:0 auto;
+  min-height:100vh;
+  padding-bottom:100px;
+}
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:40;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:12px 16px;
+
+  background:rgba(255,250,245,.90);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(232,229,239,.76);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.brand-mark{
+  width:40px;
+  height:40px;
+  border-radius:14px;
+
+  display:grid;
+  place-items:center;
+
+  color:white;
+  font-size:20px;
+  font-weight:800;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--pink)
+    );
+}
+
+.brand-copy{
+  min-width:0;
+}
+
+.brand-title{
+  font-family:"Plus Jakarta Sans",sans-serif;
+  font-weight:800;
+  letter-spacing:-.03em;
+  font-size:15px;
+}
+
+.brand-sub{
+  margin-top:2px;
+  font-size:11px;
+  color:var(--muted);
+  font-weight:700;
+}
+
+.icon-button{
+  width:42px;
+  height:42px;
+
+  border:1px solid var(--line);
+  background:white;
+
+  border-radius:14px;
+  cursor:pointer;
+
+  display:grid;
+  place-items:center;
+
+  font-size:20px;
+}
+
+main{
+  padding:0 16px;
+}
+
+.screen{
+  display:none;
+}
+
+.screen.active{
+  display:block;
+  animation:screenIn .28s ease;
+}
+
+@keyframes screenIn{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.hero{
+  padding:28px 2px 18px;
+}
+
+.eyebrow{
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--violet);
+}
+
+h1,
+h2,
+h3{
+  font-family:"Plus Jakarta Sans",sans-serif;
+  letter-spacing:-.04em;
+}
+
+h1{
+  font-size:clamp(34px,10vw,46px);
+  line-height:1.02;
+  margin:8px 0 12px;
+}
+
+h2{
+  font-size:26px;
+  line-height:1.06;
+  margin:6px 0 10px;
+}
+
+h3{
+  margin:3px 0 6px;
+  font-size:18px;
+}
+
+p{
+  margin:8px 0;
+  line-height:1.55;
+  color:var(--muted);
+}
+
+.section{
+  margin-top:18px;
+}
+
+.scene{
+  position:relative;
+
+  border-radius:28px;
+  padding:22px;
+
+  background:white;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+
+  overflow:hidden;
+}
+
+.scene-blue{
+  color:white;
+  border:0;
+
+  background:
+    linear-gradient(
+      145deg,
+      #6677ff,
+      #5362ee
+    );
+}
+
+.scene-blue p{
+  color:rgba(255,255,255,.88);
+}
+
+.scene-yellow{
+  background:
+    linear-gradient(
+      145deg,
+      #ffd84a,
+      #ffe991
+    );
+  border:0;
+}
+
+.scene-lime{
+  background:
+    linear-gradient(
+      145deg,
+      #bdf34a,
+      #dcff8a
+    );
+  border:0;
+}
+
+.big-button{
+  width:100%;
+  min-height:54px;
+
+  border:0;
+  border-radius:18px;
+
+  padding:15px 18px;
+
+  font-weight:800;
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+
+  background:var(--ink);
+  color:white;
+
+  transition:
+    transform .16s ease,
+    opacity .16s ease;
+}
+
+.big-button:active{
+  transform:scale(.985);
+}
+
+.secondary-button{
+  width:100%;
+  min-height:50px;
+
+  border-radius:16px;
+  border:1px solid var(--line);
+
+  background:white;
+  color:var(--ink);
+
+  padding:13px 16px;
+
+  font-weight:800;
+  cursor:pointer;
+}
+
+.progress-track{
+  height:9px;
+  background:rgba(23,23,36,.10);
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.progress-bar{
+  height:100%;
+  width:0;
+
+  border-radius:inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--blue),
+      var(--pink)
+    );
+
+  transition:width .45s ease;
+}
+
+/* PIPO */
+
+.pipo-row{
+  display:grid;
+  grid-template-columns:100px minmax(0,1fr);
+  align-items:end;
+  gap:8px;
+
+  margin:8px 0 16px;
+}
+
+.pipo-wrap{
+  width:100px;
+  height:116px;
+
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+}
+
+.pipo{
+  position:relative;
+
+  width:82px;
+  height:88px;
+
+  transform-origin:50% 90%;
+}
+
+.pipo-head{
+  position:absolute;
+  left:8px;
+  top:21px;
+
+  width:66px;
+  height:62px;
+
+  border-radius:48% 48% 44% 44%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #efbf61,
+      #d99b35
+    );
+
+  border:3px solid rgba(92,57,19,.14);
+}
+
+.pipo-ear{
+  position:absolute;
+  top:30px;
+
+  width:24px;
+  height:42px;
+
+  background:#c98b2e;
+
+  border-radius:60% 40% 65% 35%;
+  z-index:-1;
+}
+
+.pipo-ear.left{
+  left:0;
+  transform:rotate(19deg);
+}
+
+.pipo-ear.right{
+  right:0;
+  transform:scaleX(-1) rotate(19deg);
+}
+
+.pipo-hat{
+  position:absolute;
+  top:3px;
+  left:17px;
+
+  width:50px;
+  height:27px;
+
+  background:#ef3e3e;
+
+  border-radius:18px 18px 6px 6px;
+
+  z-index:4;
+
+  box-shadow:
+    inset 0 -5px 0 rgba(135,21,21,.16);
+}
+
+.pipo-hat::after{
+  content:"";
+
+  position:absolute;
+  left:-9px;
+  bottom:-5px;
+
+  width:68px;
+  height:10px;
+
+  background:#d92828;
+  border-radius:999px;
+}
+
+.pipo-badge{
+  position:absolute;
+  top:8px;
+  left:19px;
+
+  width:12px;
+  height:12px;
+
+  border-radius:50%;
+
+  background:#ffd84a;
+  border:2px solid #fff0a5;
+
+  z-index:5;
+}
+
+.pipo-eye{
+  position:absolute;
+  top:22px;
+
+  width:8px;
+  height:10px;
+
+  background:#33261e;
+  border-radius:50%;
+
+  z-index:3;
+}
+
+.pipo-eye.left{
+  left:17px;
+}
+
+.pipo-eye.right{
+  right:17px;
+}
+
+.pipo-snout{
+  position:absolute;
+
+  left:17px;
+  top:34px;
+
+  width:32px;
+  height:23px;
+
+  border-radius:50%;
+
+  background:#f8d894;
+}
+
+.pipo-nose{
+  position:absolute;
+
+  left:12px;
+  top:3px;
+
+  width:9px;
+  height:7px;
+
+  border-radius:50%;
+
+  background:#2d211c;
+}
+
+.pipo-mouth{
+  position:absolute;
+
+  left:9px;
+  top:11px;
+
+  width:14px;
+  height:7px;
+
+  border-bottom:2px solid #5d3527;
+  border-radius:0 0 12px 12px;
+}
+
+.pipo-tongue{
+  position:absolute;
+
+  left:11px;
+  top:16px;
+
+  width:11px;
+  height:13px;
+
+  border-radius:3px 3px 8px 8px;
+
+  background:#ef6e7d;
+
+  transform-origin:50% 0;
+}
+
+.pipo-collar{
+  position:absolute;
+
+  left:18px;
+  bottom:0;
+
+  width:47px;
+  height:9px;
+
+  background:#2f66ff;
+  border-radius:999px;
+
+  z-index:5;
+}
+
+.pipo-tag{
+  position:absolute;
+
+  left:35px;
+  bottom:-7px;
+
+  width:12px;
+  height:12px;
+
+  background:#ffd84a;
+  border-radius:50%;
+
+  z-index:6;
+}
+
+.speech{
+  position:relative;
+
+  background:white;
+  border:1px solid var(--line);
+
+  border-radius:
+    22px
+    22px
+    22px
+    7px;
+
+  padding:15px 16px;
+
+  font-size:14px;
+  line-height:1.45;
+
+  box-shadow:
+    0 10px 28px rgba(34,28,68,.08);
+}
+
+.speech strong{
+  display:block;
+  margin-bottom:3px;
+}
+
+/* PIPO REACTIONS */
+
+.pipo.react-happy{
+  animation:pipoHappy .65s ease;
+}
+
+.pipo.react-curious{
+  animation:pipoCurious .75s ease;
+}
+
+.pipo.react-surprised{
+  animation:pipoSurprised .58s ease;
+}
+
+.pipo.react-sad{
+  animation:pipoSad .58s ease;
+}
+
+.pipo.react-happy .pipo-tongue{
+  animation:tongueHappy .6s ease;
+}
+
+.pipo.react-surprised .pipo-eye{
+  transform:scale(1.35);
+}
+
+.pipo.react-sad .pipo-ear.left{
+  transform:rotate(36deg);
+}
+
+.pipo.react-sad .pipo-ear.right{
+  transform:scaleX(-1) rotate(36deg);
+}
+
+@keyframes pipoHappy{
+  0%{transform:translateY(0) rotate(0);}
+  30%{transform:translateY(-8px) rotate(-4deg);}
+  60%{transform:translateY(-2px) rotate(4deg);}
+  100%{transform:none;}
+}
+
+@keyframes pipoCurious{
+  0%{transform:rotate(0);}
+  40%{transform:rotate(-10deg);}
+  75%{transform:rotate(5deg);}
+  100%{transform:none;}
+}
+
+@keyframes pipoSurprised{
+  0%{transform:scale(1);}
+  45%{transform:scale(1.12);}
+  100%{transform:scale(1);}
+}
+
+@keyframes pipoSad{
+  0%{transform:none;}
+  40%{transform:translateY(5px) scale(.97);}
+  100%{transform:none;}
+}
+
+@keyframes tongueHappy{
+  0%{transform:rotate(0);}
+  35%{transform:rotate(-9deg);}
+  70%{transform:rotate(9deg);}
+  100%{transform:none;}
+}
+
+/* HOME */
+
+.resume-meta{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+
+  margin:14px 0;
+}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+
+  padding:7px 10px;
+
+  border-radius:999px;
+
+  background:rgba(255,255,255,.15);
+
+  font-size:12px;
+  font-weight:800;
+}
+
+.stats-line{
+  display:flex;
+  gap:10px;
+  margin-top:14px;
+}
+
+.stat{
+  flex:1;
+
+  padding:15px;
+
+  border-radius:20px;
+
+  background:white;
+  border:1px solid var(--line);
+}
+
+.stat-label{
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  color:var(--muted);
+  letter-spacing:.08em;
+}
+
+.stat-value{
+  margin-top:4px;
+
+  font-family:"Plus Jakarta Sans";
+  font-weight:800;
+  font-size:27px;
+}
+
+/* ROUTE */
+
+.stage{
+  margin-bottom:30px;
+}
+
+.stage-title{
+  margin-bottom:10px;
+}
+
+.route{
+  position:relative;
+  padding-left:22px;
+}
+
+.route-line{
+  position:absolute;
+
+  left:7px;
+  top:20px;
+  bottom:20px;
+
+  width:3px;
+
+  border-radius:999px;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--blue),
+      var(--violet),
+      var(--aqua),
+      var(--coral),
+      var(--yellow)
+    );
+}
+
+.module{
+  position:relative;
+  margin-bottom:12px;
+
+  padding:17px 16px;
+
+  border-radius:21px;
+
+  background:white;
+  border:1px solid var(--line);
+
+  cursor:pointer;
+}
+
+.module::before{
+  content:"";
+
+  position:absolute;
+
+  left:-22px;
+  top:22px;
+
+  width:17px;
+  height:17px;
+
+  border-radius:50%;
+
+  background:white;
+  border:4px solid var(--module-color,var(--blue));
+
+  z-index:2;
+}
+
+.module.locked{
+  opacity:.68;
+}
+
+.module-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.module-number{
+  font-size:11px;
+  font-weight:800;
+  color:var(--module-color,var(--blue));
+  letter-spacing:.10em;
+}
+
+.module-state{
+  font-size:11px;
+  font-weight:800;
+
+  padding:6px 9px;
+
+  border-radius:999px;
+
+  background:#f3f1f7;
+}
+
+.module h3{
+  margin-top:8px;
+}
+
+.module p{
+  margin-bottom:0;
+  font-size:13px;
+}
+
+/* LESSON */
+
+.lesson-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  margin:13px 0 12px;
+}
+
+.back-button{
+  border:0;
+  background:transparent;
+
+  padding:8px 0;
+
+  font-weight:800;
+  cursor:pointer;
+
+  color:#606274;
+}
+
+.lesson-counter{
+  font-size:12px;
+  font-weight:800;
+  color:var(--muted);
+}
+
+.lesson-progress{
+  display:flex;
+  gap:5px;
+
+  margin-bottom:18px;
+}
+
+.lesson-progress span{
+  height:6px;
+  flex:1;
+
+  border-radius:999px;
+  background:#e5e3ea;
+}
+
+.lesson-progress span.done{
+  background:var(--aqua);
+}
+
+.lesson-progress span.current{
+  background:var(--violet);
+}
+
+.question{
+  font-family:"Plus Jakarta Sans";
+  font-size:30px;
+  line-height:1.06;
+  letter-spacing:-.04em;
+
+  margin:10px 0 18px;
+}
+
+.answer-grid{
+  display:grid;
+  gap:10px;
+}
+
+.answer-button{
+  width:100%;
+  min-height:55px;
+
+  border-radius:17px;
+  border:1px solid var(--line);
+
+  background:white;
+
+  padding:14px 16px;
+
+  text-align:left;
+  font-weight:800;
+
+  cursor:pointer;
+
+  transition:
+    transform .16s ease,
+    background .16s ease,
+    border-color .16s ease;
+}
+
+.answer-button:active{
+  transform:scale(.985);
+}
+
+.answer-button.correct{
+  background:#efffdf;
+  border-color:#9cdb66;
+}
+
+.answer-button.wrong{
+  background:#fff0ec;
+  border-color:#ff9a8e;
+  animation:answerShake .3s ease;
+}
+
+@keyframes answerShake{
+  25%{transform:translateX(-4px);}
+  75%{transform:translateX(4px);}
+}
+
+.feedback{
+  display:none;
+
+  margin-top:14px;
+  padding:14px 15px;
+
+  border-radius:17px;
+
+  background:white;
+  border:1px solid var(--line);
+
+  line-height:1.45;
+  font-weight:700;
+}
+
+.feedback.show{
+  display:block;
+}
+
+.lesson-actions{
+  margin-top:16px;
+}
+
+/* PROGRESS */
+
+.progress-hero{
+  padding:26px 0 18px;
+}
+
+.progress-number{
+  font-family:"Plus Jakarta Sans";
+  font-weight:800;
+  font-size:60px;
+  line-height:.95;
+
+  margin:10px 0;
+}
+
+.skill-list{
+  margin-top:16px;
+}
+
+.skill-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+
+  padding:15px 0;
+
+  border-bottom:1px solid var(--line);
+}
+
+.skill-row:last-child{
+  border-bottom:0;
+}
+
+.skill-state{
+  font-size:12px;
+  font-weight:800;
+
+  padding:6px 9px;
+  border-radius:999px;
+
+  background:#f2f0f6;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+  position:fixed;
+
+  left:50%;
+  bottom:var(--safe-bottom);
+
+  transform:translateX(-50%);
+
+  width:min(calc(100% - 24px),456px);
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+
+  gap:5px;
+
+  padding:7px;
+
+  border-radius:23px;
+
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(18px);
+
+  border:1px solid var(--line);
+
+  box-shadow:
+    0 18px 48px rgba(30,26,58,.14);
+
+  z-index:50;
+}
+
+.nav-button{
+  min-height:52px;
+
+  border:0;
+  border-radius:17px;
+
+  background:transparent;
+  color:#787a8b;
+
+  font-size:12px;
+  font-weight:800;
+
+  cursor:pointer;
+}
+
+.nav-icon{
+  display:block;
+  font-size:19px;
+  margin-bottom:2px;
+}
+
+.nav-button.active{
+  background:var(--ink);
+  color:white;
+}
+
+/* MODALS */
+
+.overlay{
+  position:fixed;
+  inset:0;
+
+  z-index:100;
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+
+  padding:18px;
+
+  background:rgba(23,23,36,.48);
+  backdrop-filter:blur(8px);
+}
+
+.overlay.show{
+  display:flex;
+}
+
+.modal{
+  width:min(100%,430px);
+
+  border-radius:28px;
+
+  background:white;
+
+  padding:22px;
+
+  box-shadow:
+    0 30px 80px rgba(23,23,36,.24);
+}
+
+.name-input{
+  width:100%;
+  height:54px;
+
+  border:1px solid var(--line);
+  border-radius:17px;
+
+  padding:0 15px;
+
+  font-size:17px;
+
+  outline:0;
+}
+
+.name-input:focus{
+  border-color:var(--violet);
+}
+
+.setting-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+
+  padding:15px 0;
+
+  border-bottom:1px solid var(--line);
+}
+
+.setting-row:last-child{
+  border-bottom:0;
+}
+
+.toggle{
+  position:relative;
+
+  width:52px;
+  height:30px;
+
+  border:0;
+  border-radius:999px;
+
+  background:#d9d7df;
+
+  cursor:pointer;
+
+  transition:background .2s ease;
+}
+
+.toggle::after{
+  content:"";
+
+  position:absolute;
+
+  top:4px;
+  left:4px;
+
+  width:22px;
+  height:22px;
+
+  border-radius:50%;
+
+  background:white;
+
+  transition:transform .2s ease;
+}
+
+.toggle.on{
+  background:var(--violet);
+}
+
+.toggle.on::after{
+  transform:translateX(22px);
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+
+  left:50%;
+  top:72px;
+
+  transform:
+    translateX(-50%)
+    translateY(-8px);
+
+  z-index:150;
+
+  background:var(--ink);
+  color:white;
+
+  padding:10px 14px;
+
+  border-radius:14px;
+
+  font-size:13px;
+  font-weight:800;
+
+  opacity:0;
+  pointer-events:none;
+
+  transition:.2s ease;
+}
+
+.toast.show{
+  opacity:1;
+
+  transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+body.reduce-motion *,
+body.reduce-motion *::before,
+body.reduce-motion *::after{
+  animation:none !important;
+  transition:none !important;
+  scroll-behavior:auto !important;
+}
+
+@media(max-width:350px){
+
+  main{
+    padding:0 12px;
+  }
+
+  h1{
+    font-size:32px;
+  }
+
+  .pipo-row{
+    grid-template-columns:80px minmax(0,1fr);
+  }
+
+  .pipo-wrap{
+    width:80px;
+  }
+
+  .pipo{
+    transform:scale(.88);
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="topbar">
+
+  <div class="brand">
+
+    <div class="brand-mark">
+      ✦
+    </div>
+
+    <div class="brand-copy">
+
+      <div class="brand-title">
+        Máster IA Aplicativa
+      </div>
+
+      <div class="brand-sub">
+        Nueva base · aprendizaje práctico
+      </div>
+
+    </div>
+
+  </div>
+
+  <button
+    id="settingsBtn"
+    class="icon-button"
+    type="button"
+    aria-label="Ajustes">
+    ⚙️
+  </button>
+
+</header>
+
+<main>
+
+  <section
+    id="home"
+    class="screen active">
+  </section>
+
+  <section
+    id="route"
+    class="screen">
+  </section>
+
+  <section
+    id="lesson"
+    class="screen">
+  </section>
+
+  <section
+    id="progress"
+    class="screen">
+  </section>
+
+</main>
+
+</div>
+
+<nav class="bottom-nav">
+
+  <button
+    class="nav-button active"
+    data-screen="home"
+    type="button">
+
+    <span class="nav-icon">
+      🏠
+    </span>
+
+    Inicio
+
+  </button>
+
+  <button
+    class="nav-button"
+    data-screen="route"
+    type="button">
+
+    <span class="nav-icon">
+      🗺️
+    </span>
+
+    Ruta
+
+  </button>
+
+  <button
+    class="nav-button"
+    data-screen="progress"
+    type="button">
+
+    <span class="nav-icon">
+      📈
+    </span>
+
+    Progreso
+
+  </button>
+
+</nav>
+
+<div
+  id="nameOverlay"
+  class="overlay">
+
+  <div class="modal">
+
+    <div class="eyebrow">
+      Antes de empezar
+    </div>
+
+    <h2>
+      ¿Cómo te llamas?
+    </h2>
+
+    <p>
+      Solo necesitamos tu nombre para que Pipo pueda acompañarte.
+    </p>
+
+    <input
+      id="nameInput"
+      class="name-input"
+      maxlength="30"
+      placeholder="Tu nombre">
+
+    <button
+      id="saveNameBtn"
+      class="big-button"
+      type="button"
+      style="margin-top:14px">
+
+      Empezar
+
+    </button>
+
+  </div>
+
+</div>
+
+<div
+  id="settingsOverlay"
+  class="overlay">
+
+  <div class="modal">
+
+    <div class="eyebrow">
+      Ajustes
+    </div>
+
+    <h2>
+      Tu experiencia
+    </h2>
+
+    <div class="setting-row">
+
+      <div>
+
+        <strong>
+          Sonidos
+        </strong>
+
+        <p style="font-size:13px;margin:3px 0 0">
+          Feedback, juegos y Pipo.
+        </p>
+
+      </div>
+
+      <button
+        id="soundToggle"
+        class="toggle"
+        type="button"
+        aria-label="Activar o desactivar sonidos">
+      </button>
+
+    </div>
+
+    <div class="setting-row">
+
+      <div>
+
+        <strong>
+          Reducir movimiento
+        </strong>
+
+        <p style="font-size:13px;margin:3px 0 0">
+          Desactiva animaciones importantes.
+        </p>
+
+      </div>
+
+      <button
+        id="motionToggle"
+        class="toggle"
+        type="button"
+        aria-label="Reducir movimiento">
+      </button>
+
+    </div>
+
+    <button
+      id="closeSettingsBtn"
+      class="big-button"
+      type="button"
+      style="margin-top:18px">
+
+      Listo
+
+    </button>
+
+  </div>
+
+</div>
+
+<div
+  id="toast"
+  class="toast">
+</div>
+
+<script>
+
+const STORAGE_KEY =
+  "master_ia_clean_base_v1";
+
+const MODULES = [
+
+  {
+    id:"m1",
+    number:"01",
+    stage:"Bases",
+    title:"Entender la IA sin humo",
+    subtitle:"Chatbots, LLM, contexto, verificación y herramientas.",
+    color:"#596cff",
+    state:"available"
+  },
+
+  {
+    id:"m2",
+    number:"02",
+    stage:"Bases",
+    title:"Prompting profesional",
+    subtitle:"Aprender a dirigir resultados.",
+    color:"#8b5cf6",
+    state:"planned"
+  },
+
+  {
+    id:"m3",
+    number:"03",
+    stage:"Bases",
+    title:"Contexto y archivos",
+    subtitle:"Dar a la IA la información correcta.",
+    color:"#23cdb6",
+    state:"planned"
+  },
+
+  {
+    id:"m4",
+    number:"04",
+    stage:"Análisis",
+    title:"Search + Deep Research",
+    subtitle:"Buscar, contrastar y construir evidencia.",
+    color:"#4f7cff",
+    state:"planned"
+  },
+
+  {
+    id:"m5",
+    number:"05",
+    stage:"Análisis",
+    title:"Data Analysis",
+    subtitle:"Convertir datos en decisiones.",
+    color:"#b0dc35",
+    state:"planned"
+  },
+
+  {
+    id:"m6",
+    number:"06",
+    stage:"Análisis",
+    title:"IA Visual",
+    subtitle:"Crear y dirigir imágenes con intención.",
+    color:"#ff715f",
+    state:"planned"
+  },
+
+  {
+    id:"m7",
+    number:"07",
+    stage:"Sistemas",
+    title:"Tasks + Work",
+    subtitle:"Delegación inteligente · demo.",
+    color:"#9c67ff",
+    state:"demo"
+  },
+
+  {
+    id:"m8",
+    number:"08",
+    stage:"Sistemas",
+    title:"Tools y conexiones",
+    subtitle:"Dar herramientas a la IA.",
+    color:"#22bfa9",
+    state:"planned"
+  },
+
+  {
+    id:"m9",
+    number:"09",
+    stage:"Sistemas",
+    title:"Desarrollo con IA",
+    subtitle:"Construir software con ayuda de IA.",
+    color:"#596cff",
+    state:"planned"
+  },
+
+  {
+    id:"m10",
+    number:"10",
+    stage:"Sistemas",
+    title:"Automatización y APIs",
+    subtitle:"Conectar sistemas y construir workflows.",
+    color:"#ff715f",
+    state:"planned"
+  },
+
+  {
+    id:"m11",
+    number:"11",
+    stage:"Construcción",
+    title:"Agentes",
+    subtitle:"Diseñar sistemas que observan, deciden y actúan.",
+    color:"#8b5cf6",
+    state:"planned"
+  },
+
+  {
+    id:"m12",
+    number:"12",
+    stage:"Construcción",
+    title:"AI Product Design",
+    subtitle:"Convertir tecnología en productos útiles.",
+    color:"#a8d82e",
+    state:"planned"
+  }
+
+];
+
+const DEFAULT_STATE = {
+
+  name:"",
+
+  screen:"home",
+
+  sound:true,
+
+  reduceMotion:false,
+
+  currentModule:"m1",
+
+  completedLessons:[],
+
+  lessonDemo:{
+    step:0,
+    answer:null,
+    finished:false
+  },
+
+  xp:0,
+
+  streak:0
+
+};
+
+let state =
+  loadState();
+
+function loadState(){
+
+  try{
+
+    const saved =
+      JSON.parse(
+        localStorage.getItem(
+          STORAGE_KEY
+        )
+      );
+
+    return {
+      ...DEFAULT_STATE,
+      ...(saved || {}),
+      lessonDemo:{
+        ...DEFAULT_STATE.lessonDemo,
+        ...(
+          saved?.lessonDemo
+          ||
+          {}
+        )
+      }
+    };
+
+  }
+  catch(error){
+
+    return {
+      ...DEFAULT_STATE
+    };
+
+  }
+
+}
+
+function saveState(){
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(
+      state
+    )
+  );
+
+}
+
+function firstName(){
+
+  return (
+    state.name
+    ||
+    ""
+  )
+  .trim()
+  .split(/\s+/)[0]
+  ||
+  "amigo";
+
+}
+
+function toast(message){
+
+  const element =
+    document.getElementById(
+      "toast"
+    );
+
+  element.textContent =
+    message;
+
+  element.classList.add(
+    "show"
+  );
+
+  clearTimeout(
+    window.__toastTimer
+  );
+
+  window.__toastTimer =
+    setTimeout(
+      ()=>{
+        element.classList.remove(
+          "show"
+        );
+      },
+      1500
+    );
+
+}
+
+function showScreen(id){
+
+  document
+    .querySelectorAll(
+      ".screen"
+    )
+    .forEach(
+      element=>{
+        element.classList.remove(
+          "active"
+        );
+      }
+    );
+
+  const screen =
+    document.getElementById(
+      id
+    );
+
+  if(screen){
+
+    screen.classList.add(
+      "active"
+    );
+
+  }
+
+  document
+    .querySelectorAll(
+      ".nav-button"
+    )
+    .forEach(
+      button=>{
+
+        button.classList.toggle(
+          "active",
+          button.dataset.screen === id
+        );
+
+      }
+    );
+
+  state.screen =
+    id;
+
+  saveState();
+
+  window.scrollTo({
+    top:0,
+    behavior:
+      state.reduceMotion
+      ?
+      "auto"
+      :
+      "smooth"
+  });
+
+}
+
+function pipoHtml(
+  message,
+  mood="happy",
+  name="Pipo"
+){
+
+  return `
+
+  <div class="pipo-row">
+
+    <div class="pipo-wrap">
+
+      <div
+        class="pipo"
+        data-pipo
+        data-mood="${mood}">
+
+        <div class="pipo-hat">
+          <div class="pipo-badge"></div>
+        </div>
+
+        <div class="pipo-ear left"></div>
+        <div class="pipo-ear right"></div>
+
+        <div class="pipo-head">
+
+          <div class="pipo-eye left"></div>
+          <div class="pipo-eye right"></div>
+
+          <div class="pipo-snout">
+
+            <div class="pipo-nose"></div>
+            <div class="pipo-mouth"></div>
+            <div class="pipo-tongue"></div>
+
+          </div>
+
+        </div>
+
+        <div class="pipo-collar"></div>
+        <div class="pipo-tag"></div>
+
+      </div>
+
+    </div>
+
+    <div class="speech">
+
+      <strong>
+        ${name}
+      </strong>
+
+      ${message}
+
+    </div>
+
+  </div>
+
+  `;
+
+}
+
+function reactPipo(
+  mood
+){
+
+  if(
+    state.reduceMotion
+  ){
+    return;
+  }
+
+  const pipo =
+    document.querySelector(
+      "[data-pipo]"
+    );
+
+  if(
+    !pipo
+  ){
+    return;
+  }
+
+  const classes = [
+    "react-happy",
+    "react-curious",
+    "react-surprised",
+    "react-sad"
+  ];
+
+  classes.forEach(
+    item=>
+      pipo.classList.remove(
+        item
+      )
+  );
+
+  void pipo.offsetWidth;
+
+  pipo.classList.add(
+    `react-${mood}`
+  );
+
+  setTimeout(
+    ()=>{
+      pipo.classList.remove(
+        `react-${mood}`
+      );
+    },
+    850
+  );
+
+}
+
+let audioContext = null;
+
+function ensureAudio(){
+
+  if(
+    !state.sound
+  ){
+    return null;
+  }
+
+  if(
+    !audioContext
+  ){
+
+    const Context =
+      window.AudioContext
+      ||
+      window.webkitAudioContext;
+
+    if(
+      !Context
+    ){
+      return null;
+    }
+
+    audioContext =
+      new Context();
+
+  }
+
+  if(
+    audioContext.state ===
+    "suspended"
+  ){
+
+    audioContext.resume();
+
+  }
+
+  return audioContext;
+
+}
+
+function tone(
+  frequency,
+  duration,
+  type="sine",
+  gainValue=.055,
+  delay=0
+){
+
+  if(
+    !state.sound
+  ){
+    return;
+  }
+
+  const context =
+    ensureAudio();
+
+  if(
+    !context
+  ){
+    return;
+  }
+
+  const oscillator =
+    context.createOscillator();
+
+  const gain =
+    context.createGain();
+
+  oscillator.type =
+    type;
+
+  oscillator.frequency.value =
+    frequency;
+
+  gain.gain.setValueAtTime(
+    .0001,
+    context.currentTime + delay
+  );
+
+  gain.gain.exponentialRampToValueAtTime(
+    gainValue,
+    context.currentTime + delay + .015
+  );
+
+  gain.gain.exponentialRampToValueAtTime(
+    .0001,
+    context.currentTime + delay + duration
+  );
+
+  oscillator.connect(
+    gain
+  );
+
+  gain.connect(
+    context.destination
+  );
+
+  oscillator.start(
+    context.currentTime + delay
+  );
+
+  oscillator.stop(
+    context.currentTime + delay + duration + .03
+  );
+
+}
+
+function soundTap(){
+
+  tone(
+    420,
+    .07,
+    "sine",
+    .025
+  );
+
+}
+
+function soundCorrect(){
+
+  tone(
+    520,
+    .10,
+    "sine",
+    .05
+  );
+
+  tone(
+    720,
+    .12,
+    "sine",
+    .05,
+    .09
+  );
+
+}
+
+function soundWrong(){
+
+  tone(
+    220,
+    .12,
+    "triangle",
+    .035
+  );
+
+}
+
+function soundComplete(){
+
+  tone(
+    523,
+    .11,
+    "sine",
+    .045
+  );
+
+  tone(
+    659,
+    .11,
+    "sine",
+    .045,
+    .09
+  );
+
+  tone(
+    784,
+    .17,
+    "sine",
+    .045,
+    .18
+  );
+
+}
+
+function renderHome(){
+
+  const completed =
+    state.completedLessons.length;
+
+  const total =
+    7;
+
+  const percent =
+    Math.round(
+      completed /
+      total *
+      100
+    );
+
+  document.getElementById(
+    "home"
+  ).innerHTML = `
+
+  <div class="hero">
+
+    <div class="eyebrow">
+      Tu aprendizaje
+    </div>
+
+    <h1>
+      Hola, ${firstName()}.
+      <br>
+      Vamos a por ello.
+    </h1>
+
+    <p>
+      Una ruta práctica para aprender IA jugando, probando y construyendo.
+    </p>
+
+  </div>
+
+  ${pipoHtml(
+    `¡Qué gusto verte! Hoy venimos a aprender sin humo y sin aburrirnos.`,
+    "happy"
+  )}
+
+  <div class="scene scene-blue">
+
+    <div
+      class="eyebrow"
+      style="color:rgba(255,255,255,.75)">
+      Continuar
+    </div>
+
+    <h2>
+      Módulo 1 · Entender la IA
+    </h2>
+
+    <p>
+      Empezaremos distinguiendo chatbot, automatización y agente.
+    </p>
+
+    <div class="resume-meta">
+
+      <span class="pill">
+        🎮 práctico
+      </span>
+
+      <span class="pill">
+        🔊 con sonido
+      </span>
+
+      <span class="pill">
+        🐶 con Pipo
+      </span>
+
+    </div>
+
+    <button
+      id="startDemoBtn"
+      class="big-button"
+      type="button"
+      style="
+        background:white;
+        color:var(--ink);
+      ">
+
+      Empezar primera misión →
+
+    </button>
+
+  </div>
+
+  <div class="stats-line">
+
+    <div class="stat">
+
+      <div class="stat-label">
+        Progreso M1
+      </div>
+
+      <div class="stat-value">
+        ${percent}%
+      </div>
+
+    </div>
+
+    <div class="stat">
+
+      <div class="stat-label">
+        Racha
+      </div>
+
+      <div class="stat-value">
+        🔥 ${state.streak}
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <div class="scene scene-yellow">
+
+      <div
+        class="eyebrow"
+        style="color:inherit">
+        Próximo reto
+      </div>
+
+      <h2>
+        ¿Quién ha sido?
+      </h2>
+
+      <p style="color:inherit">
+        Un pequeño juego para descubrir quién responde, quién ejecuta y quién decide.
+      </p>
+
+    </div>
+
+  </div>
+
+  `;
+
+  document
+    .getElementById(
+      "startDemoBtn"
+    )
+    .addEventListener(
+      "click",
+      ()=>{
+        soundTap();
+        openLessonDemo();
+      }
+    );
+
+}
+
+function renderRoute(){
+
+  const stages = [
+    "Bases",
+    "Análisis",
+    "Sistemas",
+    "Construcción"
+  ];
+
+  document.getElementById(
+    "route"
+  ).innerHTML = `
+
+  <div class="hero">
+
+    <div class="eyebrow">
+      Ruta
+    </div>
+
+    <h1>
+      De entender IA a construir con ella.
+    </h1>
+
+    <p>
+      Pipo te irá guiando módulo por módulo.
+    </p>
+
+  </div>
+
+  ${pipoHtml(
+    `Vamos con calma. Primero entendemos bien la base y luego subimos de nivel.`,
+    "curious"
+  )}
+
+  ${stages.map(
+    stage=>{
+
+      const modules =
+        MODULES.filter(
+          module=>
+            module.stage === stage
+        );
+
+      return `
+
+      <section class="stage">
+
+        <div class="stage-title">
+
+          <div class="eyebrow">
+            ${stage}
+          </div>
+
+        </div>
+
+        <div class="route">
+
+          <div class="route-line"></div>
+
+          ${modules.map(
+            module=>{
+
+              const locked =
+                module.state !==
+                "available";
+
+              const stateLabel =
+                module.state === "available"
+                ?
+                "Disponible"
+                :
+                module.state === "demo"
+                ?
+                "Demo"
+                :
+                "Ruta lista";
+
+              return `
+
+              <article
+                class="
+                  module
+                  ${locked ? "locked" : ""}
+                "
+                style="
+                  --module-color:${module.color}
+                "
+                data-module="${module.id}">
+
+                <div class="module-top">
+
+                  <span class="module-number">
+                    MÓDULO ${module.number}
+                  </span>
+
+                  <span class="module-state">
+                    ${stateLabel}
+                  </span>
+
+                </div>
+
+                <h3>
+                  ${module.title}
+                </h3>
+
+                <p>
+                  ${module.subtitle}
+                </p>
+
+              </article>
+
+              `;
+
+            }
+          ).join("")}
+
+        </div>
+
+      </section>
+
+      `;
+
+    }
+  ).join("")}
+
+  `;
+
+  document
+    .querySelectorAll(
+      "[data-module]"
+    )
+    .forEach(
+      card=>{
+
+        card.addEventListener(
+          "click",
+          ()=>{
+
+            const id =
+              card.dataset.module;
+
+            const module =
+              MODULES.find(
+                item=>
+                  item.id === id
+              );
+
+            soundTap();
+
+            if(
+              module.state ===
+              "available"
+            ){
+
+              openLessonDemo();
+
+            }
+            else if(
+              module.state ===
+              "demo"
+            ){
+
+              toast(
+                "Módulo 7 quedará como demo avanzada."
+              );
+
+              reactPipo(
+                "curious"
+              );
+
+            }
+            else{
+
+              toast(
+                "La ruta está preparada. Lo construiremos paso a paso."
+              );
+
+              reactPipo(
+                "happy"
+              );
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+}
+
+const LESSON_STEPS = [
+
+  {
+    type:"question",
+    title:"Caso #01",
+    question:"Cada vez que alguien compra, recibe automáticamente una factura.",
+    answers:[
+      "Chatbot",
+      "Automatización",
+      "Agente"
+    ],
+    correct:1,
+    success:"Exacto. Evento → regla → acción.",
+    wrong:"Casi. Pregúntate: ¿alguien tuvo que tomar una decisión?"
+  },
+
+  {
+    type:"concept",
+    title:"La regla rápida",
+    question:"Chatbot responde. Automatización ejecuta. Agente decide."
+  },
+
+  {
+    type:"question",
+    title:"Caso #02",
+    question:"Un pedido llega sin color y el sistema decide preguntárselo al cliente.",
+    answers:[
+      "Chatbot",
+      "Automatización",
+      "Agente"
+    ],
+    correct:2,
+    success:"¡Ahí hay decisión! El camino cambia según el estado del pedido.",
+    wrong:"Busca una decisión. Si tiene que elegir qué hacer, piensa en agente."
+  }
+
+];
+
+function openLessonDemo(){
+
+  state.screen =
+    "lesson";
+
+  saveState();
+
+  renderLesson();
+
+  showScreen(
+    "lesson"
+  );
+
+}
+
+function renderLesson(){
+
+  const index =
+    state.lessonDemo.step;
+
+  const step =
+    LESSON_STEPS[index];
+
+  const progressItems =
+    LESSON_STEPS.map(
+      (_,itemIndex)=>{
+
+        const className =
+          itemIndex < index
+          ?
+          "done"
+          :
+          itemIndex === index
+          ?
+          "current"
+          :
+          "";
+
+        return `
+          <span class="${className}"></span>
+        `;
+
+      }
+    ).join("");
+
+  let content = "";
+
+  if(
+    step.type ===
+    "question"
+  ){
+
+    content = `
+
+    <div class="eyebrow">
+      ${step.title}
+    </div>
+
+    <div class="question">
+      ${step.question}
+    </div>
+
+    <div class="answer-grid">
+
+      ${step.answers.map(
+        (answer,answerIndex)=>`
+
+        <button
+          class="answer-button"
+          type="button"
+          data-answer="${answerIndex}">
+
+          ${answer}
+
+        </button>
+
+        `
+      ).join("")}
+
+    </div>
+
+    <div
+      id="feedback"
+      class="feedback">
+    </div>
+
+    <div
+      id="lessonActions"
+      class="lesson-actions">
+    </div>
+
+    `;
+
+  }
+  else{
+
+    content = `
+
+    <div class="eyebrow">
+      Concepto
+    </div>
+
+    <div class="question">
+      ${step.question}
+    </div>
+
+    ${pipoHtml(
+      `Hack rápido: busca siempre si existe una decisión que pueda cambiar el camino.`,
+      "curious"
+    )}
+
+    <button
+      id="nextConceptBtn"
+      class="big-button"
+      type="button">
+
+      Probar otro caso →
+
+    </button>
+
+    `;
+
+  }
+
+  document.getElementById(
+    "lesson"
+  ).innerHTML = `
+
+  <div class="lesson-top">
+
+    <button
+      id="lessonBackBtn"
+      class="back-button"
+      type="button">
+
+      ← Ruta
+
+    </button>
+
+    <span class="lesson-counter">
+
+      ${index + 1}
+      /
+      ${LESSON_STEPS.length}
+
+    </span>
+
+  </div>
+
+  <div class="lesson-progress">
+    ${progressItems}
+  </div>
+
+  ${index === 0
+    ?
+    pipoHtml(
+      `Vamos a investigar. Te doy un caso y tú me dices quién está actuando.`,
+      "curious"
+    )
+    :
+    ""
+  }
+
+  <div class="scene">
+
+    ${content}
+
+  </div>
+
+  `;
+
+  document
+    .getElementById(
+      "lessonBackBtn"
+    )
+    .addEventListener(
+      "click",
+      ()=>{
+        soundTap();
+        renderRoute();
+        showScreen(
+          "route"
+        );
+      }
+    );
+
+  if(
+    step.type ===
+    "question"
+  ){
+
+    document
+      .querySelectorAll(
+        "[data-answer]"
+      )
+      .forEach(
+        button=>{
+
+          button.addEventListener(
+            "click",
+            ()=>{
+
+              handleAnswer(
+                Number(
+                  button.dataset.answer
+                )
+              );
+
+            }
+          );
+
+        }
+      );
+
+  }
+  else{
+
+    document
+      .getElementById(
+        "nextConceptBtn"
+      )
+      .addEventListener(
+        "click",
+        ()=>{
+
+          soundTap();
+
+          state.lessonDemo.step++;
+
+          state.lessonDemo.answer =
+            null;
+
+          saveState();
+
+          renderLesson();
+
+        }
+      );
+
+  }
+
+}
+
+function handleAnswer(
+  selected
+){
+
+  const step =
+    LESSON_STEPS[
+      state.lessonDemo.step
+    ];
+
+  const buttons =
+    [
+      ...document.querySelectorAll(
+        "[data-answer]"
+      )
+    ];
+
+  buttons.forEach(
+    button=>{
+      button.disabled =
+        true;
+    }
+  );
+
+  const feedback =
+    document.getElementById(
+      "feedback"
+    );
+
+  const actions =
+    document.getElementById(
+      "lessonActions"
+    );
+
+  state.lessonDemo.answer =
+    selected;
+
+  const correct =
+    selected ===
+    step.correct;
+
+  if(
+    correct
+  ){
+
+    buttons[selected]
+      .classList.add(
+        "correct"
+      );
+
+    feedback.innerHTML =
+      `✅ ${step.success}`;
+
+    feedback.classList.add(
+      "show"
+    );
+
+    soundCorrect();
+
+    reactPipo(
+      "happy"
+    );
+
+    actions.innerHTML = `
+
+      <button
+        id="continueLessonBtn"
+        class="big-button"
+        type="button">
+
+        ${
+          state.lessonDemo.step ===
+          LESSON_STEPS.length - 1
+          ?
+          "Completar demo ✨"
+          :
+          "Continuar →"
+        }
+
+      </button>
+
+    `;
+
+    document
+      .getElementById(
+        "continueLessonBtn"
+      )
+      .addEventListener(
+        "click",
+        ()=>{
+
+          if(
+            state.lessonDemo.step ===
+            LESSON_STEPS.length - 1
+          ){
+
+            finishDemo();
+
+          }
+          else{
+
+            soundTap();
+
+            state.lessonDemo.step++;
+
+            state.lessonDemo.answer =
+              null;
+
+            saveState();
+
+            renderLesson();
+
+          }
+
+        }
+      );
+
+  }
+  else{
+
+    buttons[selected]
+      .classList.add(
+        "wrong"
+      );
+
+    feedback.innerHTML =
+      `🐶 ${step.wrong}`;
+
+    feedback.classList.add(
+      "show"
+    );
+
+    soundWrong();
+
+    reactPipo(
+      "sad"
+    );
+
+    setTimeout(
+      ()=>{
+
+        reactPipo(
+          "happy"
+        );
+
+      },
+      650
+    );
+
+    actions.innerHTML = `
+
+      <button
+        id="retryBtn"
+        class="secondary-button"
+        type="button">
+
+        Probar otra vez
+
+      </button>
+
+    `;
+
+    document
+      .getElementById(
+        "retryBtn"
+      )
+      .addEventListener(
+        "click",
+        ()=>{
+
+          soundTap();
+
+          state.lessonDemo.answer =
+            null;
+
+          saveState();
+
+          renderLesson();
+
+        }
+      );
+
+  }
+
+  saveState();
+
+}
+
+function finishDemo(){
+
+  soundComplete();
+
+  reactPipo(
+    "happy"
+  );
+
+  state.lessonDemo.finished =
+    true;
+
+  state.lessonDemo.step =
+    0;
+
+  state.lessonDemo.answer =
+    null;
+
+  if(
+    !state.completedLessons.includes(
+      "m1-demo"
+    )
+  ){
+
+    state.completedLessons.push(
+      "m1-demo"
+    );
+
+    state.xp +=
+      1;
+
+  }
+
+  saveState();
+
+  renderProgress();
+
+  showScreen(
+    "progress"
+  );
+
+  toast(
+    "Primera misión completada ✨"
+  );
+
+}
+
+function renderProgress(){
+
+  const done =
+    state.completedLessons.length;
+
+  const total =
+    7;
+
+  const percent =
+    Math.min(
+      100,
+      Math.round(
+        done /
+        total *
+        100
+      )
+    );
+
+  document.getElementById(
+    "progress"
+  ).innerHTML = `
+
+  <div class="progress-hero">
+
+    <div class="eyebrow">
+      Progreso
+    </div>
+
+    <div class="progress-number">
+      ${percent}%
+    </div>
+
+    <p>
+      Progreso real del Módulo 1.
+    </p>
+
+  </div>
+
+  ${pipoHtml(
+    done > 0
+    ?
+    `¡Muy bien, ${firstName()}! Ya has empezado de verdad. Una misión menos y una idea más clara.`
+    :
+    `Todavía estamos calentando motores. En cuanto termines tu primera misión, lo celebramos.`,
+    done > 0
+    ?
+    "happy"
+    :
+    "curious"
+  )}
+
+  <div class="scene">
+
+    <div class="eyebrow">
+      Módulo 1
+    </div>
+
+    <h2>
+      Entender la IA sin humo
+    </h2>
+
+    <div class="progress-track">
+      <div
+        class="progress-bar"
+        style="width:${percent}%">
+      </div>
+    </div>
+
+    <div class="skill-list">
+
+      <div class="skill-row">
+
+        <strong>
+          Entender
+        </strong>
+
+        <span class="skill-state">
+
+          ${
+            done > 0
+            ?
+            "Empezando"
+            :
+            "Nuevo"
+          }
+
+        </span>
+
+      </div>
+
+      <div class="skill-row">
+
+        <strong>
+          Elegir herramientas
+        </strong>
+
+        <span class="skill-state">
+          Nuevo
+        </span>
+
+      </div>
+
+      <div class="skill-row">
+
+        <strong>
+          Verificar
+        </strong>
+
+        <span class="skill-state">
+          Nuevo
+        </span>
+
+      </div>
+
+      <div class="skill-row">
+
+        <strong>
+          Descomponer
+        </strong>
+
+        <span class="skill-state">
+          Nuevo
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    ${pipoHtml(
+      `No buscamos hacerlo perfecto a la primera. La gracia está en ir entendiéndolo mejor cada vez.`,
+      "happy"
+    )}
+
+  </div>
+
+  `;
+
+}
+
+function applySettings(){
+
+  document.body.classList.toggle(
+    "reduce-motion",
+    state.reduceMotion
+  );
+
+  document
+    .getElementById(
+      "soundToggle"
+    )
+    .classList.toggle(
+      "on",
+      state.sound
+    );
+
+  document
+    .getElementById(
+      "motionToggle"
+    )
+    .classList.toggle(
+      "on",
+      state.reduceMotion
+    );
+
+}
+
+function openSettings(){
+
+  applySettings();
+
+  document
+    .getElementById(
+      "settingsOverlay"
+    )
+    .classList.add(
+      "show"
+    );
+
+}
+
+function closeSettings(){
+
+  document
+    .getElementById(
+      "settingsOverlay"
+    )
+    .classList.remove(
+      "show"
+    );
+
+}
+
+function ensureName(){
+
+  if(
+    !state.name
+  ){
+
+    document
+      .getElementById(
+        "nameOverlay"
+      )
+      .classList.add(
+        "show"
+      );
+
+  }
+
+}
+
+document
+  .querySelectorAll(
+    ".nav-button"
+  )
+  .forEach(
+    button=>{
+
+      button.addEventListener(
+        "click",
+        ()=>{
+
+          soundTap();
+
+          const target =
+            button.dataset.screen;
+
+          if(
+            target ===
+            "home"
+          ){
+            renderHome();
+          }
+
+          if(
+            target ===
+            "route"
+          ){
+            renderRoute();
+          }
+
+          if(
+            target ===
+            "progress"
+          ){
+            renderProgress();
+          }
+
+          showScreen(
+            target
+          );
+
+        }
+      );
+
+    }
+  );
+
+document
+  .getElementById(
+    "settingsBtn"
+  )
+  .addEventListener(
+    "click",
+    ()=>{
+
+      soundTap();
+      openSettings();
+
+    }
+  );
+
+document
+  .getElementById(
+    "closeSettingsBtn"
+  )
+  .addEventListener(
+    "click",
+    ()=>{
+
+      soundTap();
+      closeSettings();
+
+    }
+  );
+
+document
+  .getElementById(
+    "soundToggle"
+  )
+  .addEventListener(
+    "click",
+    ()=>{
+
+      state.sound =
+        !state.sound;
+
+      saveState();
+
+      applySettings();
+
+      if(
+        state.sound
+      ){
+        soundCorrect();
+      }
+
+    }
+  );
+
+document
+  .getElementById(
+    "motionToggle"
+  )
+  .addEventListener(
+    "click",
+    ()=>{
+
+      state.reduceMotion =
+        !state.reduceMotion;
+
+      saveState();
+
+      applySettings();
+
+    }
+  );
+
+document
+  .getElementById(
+    "saveNameBtn"
+  )
+  .addEventListener(
+    "click",
+    ()=>{
+
+      const input =
+        document.getElementById(
+          "nameInput"
+        );
+
+      const value =
+        input.value.trim();
+
+      if(
+        !value
+      ){
+
+        toast(
+          "Escribe tu nombre para empezar."
+        );
+
+        return;
+
+      }
+
+      state.name =
+        value;
+
+      saveState();
+
+      document
+        .getElementById(
+          "nameOverlay"
+        )
+        .classList.remove(
+          "show"
+        );
+
+      soundCorrect();
+
+      renderHome();
+
+      reactPipo(
+        "happy"
+      );
+
+    }
+  );
+
+document
+  .getElementById(
+    "nameInput"
+  )
+  .addEventListener(
+    "keydown",
+    event=>{
+
+      if(
+        event.key ===
+        "Enter"
+      ){
+
+        document
+          .getElementById(
+            "saveNameBtn"
+          )
+          .click();
+
+      }
+
+    }
+  );
+
+applySettings();
+
+renderHome();
+renderRoute();
+renderProgress();
+
+showScreen(
+  state.screen === "lesson"
+  ?
+  "home"
+  :
+  state.screen
+);
+
+ensureName();
+
+</script>
+
+</body>
+</html>
