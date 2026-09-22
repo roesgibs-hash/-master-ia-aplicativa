@@ -1,0 +1,1311 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Máster IA Aplicativa — V1</title>
+<style>
+:root{--bg:#0F1115;--s:#171A21;--s2:#20242D;--t:#F7F8FA;--m:#A6ADBB;--b:#5C7CFF;--v:#9767FF;--g:#49C78E;--r:#F06F73;--bd:#2B313C}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--t);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}.app{max-width:1050px;margin:auto;padding-bottom:90px}.top{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:linear-gradient(#0F1115,rgba(15,17,21,.88),transparent);backdrop-filter:blur(10px)}.brand{display:flex;gap:10px;align-items:center;font-weight:800}.spark{width:34px;height:34px;border-radius:12px;background:linear-gradient(135deg,var(--b),var(--v));display:grid;place-items:center}.badge{font-size:12px;color:var(--m);border:1px solid var(--bd);padding:6px 9px;border-radius:999px}main{padding:0 20px}.screen{display:none;animation:f .25s ease}.screen.active{display:block}@keyframes f{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}.hero{padding:18px 0}.hero h1{font-size:clamp(30px,7vw,44px);line-height:1;margin:6px 0 10px;letter-spacing:-.04em}.k{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#9ca8ff;font-weight:800}p{color:var(--m);line-height:1.55}.grid{display:grid;gap:14px}.two{grid-template-columns:repeat(2,minmax(0,1fr))}.card{background:linear-gradient(var(--s2),var(--s));border:1px solid var(--bd);border-radius:18px;padding:18px}.accent{background:radial-gradient(circle at 90% 0%,rgba(151,103,255,.20),transparent 35%),linear-gradient(var(--s2),var(--s));border-color:#46507c}.row{display:flex;justify-content:space-between;align-items:center;gap:12px}.btn{border:0;border-radius:12px;padding:12px 15px;font-weight:800;cursor:pointer}.primary{background:linear-gradient(135deg,var(--b),var(--v));color:#fff}.ghost{background:#252B35;border:1px solid #313846;color:#fff}.success{background:rgba(73,199,142,.15);color:#78ddb0}.progress{height:8px;border-radius:999px;background:#2a3039;overflow:hidden}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--b),var(--v));transition:.35s}.chips{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.chip{font-size:12px;padding:6px 9px;border:1px solid #303744;border-radius:999px;color:#ccd2dd;background:#252B35}.module{cursor:pointer;transition:.18s}.module:hover{transform:translateY(-2px)}.nav{position:fixed;left:50%;transform:translateX(-50%);bottom:12px;width:min(94%,680px);display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:rgba(23,26,33,.95);padding:7px;border:1px solid var(--bd);border-radius:20px;backdrop-filter:blur(14px)}.nav button{border:0;background:transparent;color:var(--m);padding:9px 4px;border-radius:14px}.nav button.active{background:#252B35;color:#fff}.ico{display:block;font-size:18px}.lesson-row{display:grid;grid-template-columns:40px 1fr auto;gap:10px;align-items:center;background:var(--s);border:1px solid var(--bd);border-radius:14px;padding:13px;margin:9px 0;cursor:pointer}.dot{width:32px;height:32px;border-radius:10px;background:#292f38;display:grid;place-items:center}.dot.done{background:rgba(73,199,142,.15);color:#78ddb0}.back{color:#b3bcff;font-weight:800;cursor:pointer;display:inline-block;margin:8px 0}.lesson{max-width:760px;margin:auto}.call{border-left:3px solid var(--b);background:#171b22;padding:11px 13px;border-radius:10px}textarea,input{width:100%;background:#11141a;color:#fff;border:1px solid #303744;border-radius:12px;padding:12px}.option{width:100%;text-align:left;margin:7px 0;background:#1b2028;color:#fff;border:1px solid #303744;border-radius:12px;padding:13px}.option.ok{border-color:var(--g);background:rgba(73,199,142,.09)}.option.bad{border-color:var(--r);background:rgba(240,111,115,.08)}.chat{display:flex;flex-direction:column;gap:10px;min-height:48vh}.bubble{max-width:84%;padding:12px 14px;border-radius:16px;line-height:1.5}.assistant{background:#20252e;border:1px solid #2f3642}.user{align-self:flex-end;background:linear-gradient(135deg,#4c69eb,#7c55db)}.chatbar{position:sticky;bottom:90px;display:grid;grid-template-columns:auto 1fr auto;gap:8px;background:var(--bg);padding:12px 0}.metric{padding:13px;background:#171b22;border:1px solid var(--bd);border-radius:14px}.small{font-size:13px;color:var(--m)}.toast{position:fixed;top:70px;left:50%;transform:translateX(-50%);background:#242a34;border:1px solid #35404d;border-radius:12px;padding:10px 13px;opacity:0;transition:.2s;z-index:80}.toast.show{opacity:1}@media(max-width:700px){.two{grid-template-columns:1fr}main{padding:0 15px}.top{padding:14px 15px}}
+</style></head><body>
+
+<div class="app">
+<header class="top">
+<div class="brand">
+<div class="spark">✦</div>
+<div>Máster IA Aplicativa<div class="small">V1 Functional Prototype</div></div>
+</div>
+<div id="save" class="badge">Guardado local</div>
+</header>
+
+<main>
+<section id="home" class="screen active"></section>
+<section id="courses" class="screen"></section>
+<section id="profe" class="screen"></section>
+<section id="progress" class="screen"></section>
+<section id="module" class="screen"></section>
+<section id="lesson" class="screen"></section>
+<section id="quiz" class="screen"></section>
+</main>
+</div>
+
+<nav class="nav">
+<button data-n="home" class="active"><span class="ico">⌂</span>Home</button>
+<button data-n="courses"><span class="ico">▦</span>Cursos</button>
+<button data-n="profe"><span class="ico">✦</span>Profe!</button>
+<button data-n="progress"><span class="ico">↗</span>Progreso</button>
+</nav>
+
+<div id="toast" class="toast"></div>
+
+<script>
+
+const M=[
+{
+id:'m1',
+n:'01',
+title:'Fundamentos de IA',
+desc:'Comprende LLM, contexto, verificación y elección de herramientas.',
+skills:['AI Literacy','Verification'],
+lessons:[
+{
+id:'m1l1',
+title:'IA, LLM, chatbot, automatización y agente',
+objective:'Distinguir conceptos fundamentales.',
+duration:12,
+concept:'IA es la categoría general. Un LLM es un modelo de lenguaje; un chatbot es una interfaz; una automatización sigue reglas; un agente persigue objetivos usando contexto y herramientas.',
+example:'Un formulario que envía un correo es automatización. Un sistema que revisa un pedido y decide qué herramienta usar puede ser un agente.',
+practice:'Clasifica tres sistemas reales como chatbot, automatización o agente.',
+q:'¿Un agente y una automatización son exactamente lo mismo?',
+opts:['Sí','No'],
+ans:1
+},
+{
+id:'m1l2',
+title:'Cómo genera respuestas un LLM',
+objective:'Entender por qué una respuesta convincente puede ser incorrecta.',
+duration:15,
+concept:'Un LLM procesa contexto y genera secuencias probables. La fluidez lingüística no equivale a certeza factual.',
+example:'Una respuesta detallada sobre una norma reciente puede sonar segura y estar desactualizada.',
+practice:'Escribe una afirmación que aceptarías sin verificar y otra que exigiría una fuente actual.',
+q:'Una respuesta larga y segura...',
+opts:['Garantiza exactitud','Puede necesitar verificación'],
+ans:1
+},
+{
+id:'m1l3',
+title:'El contexto cambia la calidad',
+objective:'Aprender a aportar contexto relevante.',
+duration:15,
+concept:'Una solicitud mejora cuando añade objetivo, situación, datos, restricciones y resultado esperado.',
+example:'“Hazme un soporte” es ambiguo. “Necesito un soporte PETG para sostener 3 kg…” delimita el problema.',
+practice:'Mejora este prompt: “Organízame los pedidos”.',
+q:'¿Qué suele mejorar más un prompt?',
+opts:['Palabras técnicas al azar','Contexto relevante','Mayúsculas'],
+ans:1
+},
+{
+id:'m1l4',
+title:'Alucinaciones y verificación',
+objective:'Saber cuándo aumentar la verificación.',
+duration:18,
+concept:'Verifica más cuando la información es actual, médica, legal, financiera, regulatoria o técnicamente crítica.',
+example:'El precio actual de un producto debe comprobarse; una propiedad matemática estable no requiere lo mismo.',
+practice:'Elige tres tipos de afirmaciones que verificarías antes de actuar.',
+q:'Para información cambiante conviene...',
+opts:['Confiar solo en memoria','Consultar una fuente actual'],
+ans:1
+},
+{
+id:'m1l5',
+title:'Elegir la herramienta correcta',
+objective:'Decidir cuándo usar Chat, Search, automatización, software especializado o humano.',
+duration:18,
+concept:'La pregunta no es “¿puedo usar IA?”, sino “¿qué herramienta resuelve mejor esta parte del problema?”.',
+example:'CAD paramétrico: software especializado. Normativa reciente: búsqueda. Proceso repetitivo: automatización.',
+practice:'Asigna una herramienta adecuada a cuatro tareas reales.',
+q:'La solución más avanzada...',
+opts:['Siempre es la mejor','Solo es mejor si resuelve mejor el problema'],
+ans:1
+},
+{
+id:'m1l6',
+title:'Descomponer problemas',
+objective:'Dividir problemas grandes en partes ejecutables.',
+duration:15,
+concept:'Antes de automatizar, separa entradas, decisiones, acciones, dependencias y salidas.',
+example:'“Automatiza REG3D” se divide en recibir, validar, presupuestar, fabricar, informar y entregar.',
+practice:'Descompón un proceso real en al menos cinco pasos.',
+q:'Antes de automatizar un proceso complejo...',
+opts:['Construye un agente','Descompón el proceso','Elige una herramienta'],
+ans:1
+}
+]
+},
+{
+id:'m2',
+n:'02',
+title:'Prompting profesional',
+desc:'Diseña instrucciones claras, verificables y reutilizables.',
+skills:['Prompting','Context Management','Evaluation'],
+lessons:[
+{
+id:'m2l1',
+title:'Anatomía de una instrucción',
+objective:'Usar tarea + contexto + resultado esperado.',
+duration:16,
+concept:'Una buena instrucción define qué debe hacerse, con qué contexto y cómo debe verse el resultado.',
+example:'“Hazme un presupuesto” → “Calcula 20 piezas PLA considerando material, horas y margen; devuelve una tabla.”',
+practice:'Reescribe una instrucción ambigua.',
+q:'¿Más palabras siempre significan mejor prompt?',
+opts:['Sí','No'],
+ans:1
+},
+{
+id:'m2l2',
+title:'Objetivo y restricciones',
+objective:'Definir límites relevantes.',
+duration:18,
+concept:'Objetivo, audiencia, límites, exclusiones y criterios delimitan el espacio de solución.',
+example:'Comparar materiales bajo condiciones concretas evita respuestas genéricas.',
+practice:'Añade tres restricciones útiles a una solicitud real.',
+q:'Una restricción útil debe...',
+opts:['Reducir ambigüedad','Hacerlo más largo'],
+ans:0
+},
+{
+id:'m2l3',
+title:'Formatos de salida',
+objective:'Elegir tabla, JSON, checklist, informe o pasos.',
+duration:18,
+concept:'El formato de salida es parte de la especificación.',
+example:'Comparar → tabla; integrar → JSON; ejecutar → checklist.',
+practice:'Pide el mismo contenido en dos formatos.',
+q:'¿El formato forma parte de la instrucción?',
+opts:['Sí','No'],
+ans:0
+},
+{
+id:'m2l4',
+title:'Criterios de aceptación',
+objective:'Definir qué significa terminado.',
+duration:16,
+concept:'Un criterio de aceptación permite evaluar objetivamente una salida.',
+example:'Completo si incluye material, cantidad, plazo, coste y datos faltantes.',
+practice:'Define cuatro criterios para una tarea habitual.',
+q:'¿“Hazlo bien” es un criterio verificable?',
+opts:['Sí','No'],
+ans:1
+},
+{
+id:'m2l5',
+title:'Ejemplos y contraejemplos',
+objective:'Reducir ambigüedad mediante muestras.',
+duration:16,
+concept:'Un ejemplo positivo y uno negativo pueden enseñar el patrón esperado.',
+example:'Pedido estructurado frente a una frase vaga.',
+practice:'Crea un ejemplo deseado y uno no deseado.',
+q:'Los ejemplos sirven para...',
+opts:['Añadir decoración','Mostrar el patrón esperado'],
+ans:1
+},
+{
+id:'m2l6',
+title:'Iteración y diagnóstico',
+objective:'Mejorar por ciclos controlados.',
+duration:18,
+concept:'Prompt → resultado → fallo → cambio específico → nueva prueba.',
+example:'Modificar una sola variable facilita entender qué mejoró.',
+practice:'Haz tres versiones de una instrucción cambiando una cosa cada vez.',
+q:'¿Conviene rehacer todo el prompt tras cada fallo?',
+opts:['Siempre','No necesariamente'],
+ans:1
+},
+{
+id:'m2l7',
+title:'Descomposición de tareas',
+objective:'Dividir objetivos grandes.',
+duration:18,
+concept:'Las tareas complejas se vuelven manejables al separar etapas y dependencias.',
+example:'Negocio 3D → mercado, cliente, catálogo, costes, flujo y validación.',
+practice:'Divide una tarea grande en cinco subtareas.',
+q:'¿Descomponer mejora el control?',
+opts:['Sí','No'],
+ans:0
+},
+{
+id:'m2l8',
+title:'Meta-prompting',
+objective:'Usar la IA para criticar instrucciones.',
+duration:16,
+concept:'Antes de ejecutar, se puede pedir al modelo que detecte ambigüedades y huecos.',
+example:'“No ejecutes la tarea. Analiza este prompt y señala información ausente.”',
+practice:'Crea un meta-prompt para revisar tus instrucciones.',
+q:'Meta-prompting sirve para...',
+opts:['Evaluar instrucciones','Generar imágenes'],
+ans:0
+}
+]
+}
+];
+
+const BASIC=[
+['m3','03','Contexto, archivos y Projects','Trabaja con documentos, imágenes y contexto persistente.',['Context Management','Document Analysis'],[
+'Contexto de conversación',
+'Seleccionar contexto',
+'PDF y documentos',
+'Imágenes',
+'Datos estructurados',
+'Projects',
+'Higiene del contexto'
+]],
+['m4','04','Search + Deep Research','Investiga con evidencia, fuentes y trazabilidad.',['Research','Verification'],[
+'Cuándo buscar',
+'Jerarquía de fuentes',
+'Pregunta de investigación',
+'Contrastar fuentes',
+'Deep Research',
+'Auditoría de investigación'
+]],
+['m5','05','Data Analysis','Convierte datos en hallazgos y decisiones.',['Data Analysis','Visualization'],[
+'Pregunta antes que gráfico',
+'Calidad de datos',
+'Estadística básica',
+'Segmentación',
+'Visualización',
+'Correlación y causalidad',
+'Comunicación ejecutiva'
+]],
+['m6','06','IA visual','Genera y edita imágenes con intención profesional.',['Visual AI','Art Direction'],[
+'Prompt visual',
+'Composición',
+'Materialidad',
+'Edición',
+'Referencias',
+'Iteración visual',
+'Límites técnicos'
+]],
+['m7','07','Tasks + Work','Delega trabajo, estructura tareas y supervisa resultados.',['Delegation','Workflow Design'],[
+'Pregunta vs tarea',
+'Eventos futuros',
+'Condiciones',
+'Descomposición',
+'Definition of Done',
+'Work',
+'Supervisión'
+]],
+['m8','08','Plugins, Skills y herramientas','Amplía capacidades mediante herramientas y permisos.',['Tool Integration','Permission Design'],[
+'Modelo vs herramienta',
+'Lectura',
+'Escritura',
+'Plugins',
+'Skills',
+'Permisos',
+'Confirmación',
+'Arquitectura'
+]],
+['m9','09','Desarrollo asistido por IA','Modifica software de forma incremental y verificable.',['AI Development','Debugging','QA'],[
+'Entender antes de editar',
+'Especificación',
+'Plan',
+'Incrementos',
+'Debugging',
+'Git',
+'QA',
+'Rollback'
+]],
+['m10','10','Automatización, No-Code y APIs','Conecta procesos, sistemas y eventos.',['Automation','APIs','Systems Thinking'],[
+'Qué automatizar',
+'Trigger',
+'Action',
+'Condition',
+'Datos entre sistemas',
+'API',
+'JSON',
+'Autenticación',
+'Webhooks',
+'Errores',
+'Idempotencia'
+]],
+['m11','11','Agentes','Diseña agentes con objetivos, herramientas, guardrails y evaluación.',['Agent Design','Safety','Evaluation'],[
+'Qué es un agente',
+'¿Necesitas agente?',
+'Objetivo',
+'Herramientas',
+'Estado',
+'Memoria',
+'Guardrails',
+'Human-in-the-loop',
+'Evaluación',
+'Fallos',
+'Multi-agent'
+]],
+['m12','12','Producto IA','Convierte problemas reales en productos utilizables.',['Product Design','UX','AI Product Strategy'],[
+'Problema antes que tecnología',
+'Usuario',
+'Journey',
+'Jobs To Be Done',
+'Hipótesis',
+'MVP',
+'UX',
+'IA visible vs invisible',
+'Métricas',
+'Testing',
+'Iteración'
+]]
+];
+
+BASIC.forEach(item=>{
+const [id,n,title,desc,skills,names]=item;
+
+M.push({
+id,
+n,
+title,
+desc,
+skills,
+lessons:names.map((name,i)=>({
+id:id+'l'+(i+1),
+title:name,
+objective:'Aplicar '+name.toLowerCase()+' dentro de un flujo profesional.',
+duration:14+(i%3)*2,
+concept:'Esta lección introduce '+name.toLowerCase()+' como una capacidad aplicada. El objetivo es entender cuándo usarla, qué información necesita y cómo verificar el resultado.',
+example:'Caso aplicado a REG3D, hostelería o un proyecto digital para comprobar transferencia.',
+practice:'Aplica '+name.toLowerCase()+' a un proceso real y documenta tu decisión en 3–5 líneas.',
+q:'¿La finalidad de esta lección es aplicar '+name.toLowerCase()+' de forma verificable?',
+opts:['Sí','No'],
+ans:0
+}))
+});
+});
+
+const QUIZ=[
+[
+'¿Qué describe mejor un LLM?',
+[
+'Una base de datos tradicional',
+'Modelo que genera lenguaje a partir de patrones y contexto',
+'Automatización'
+],
+1
+],
+[
+'¿Qué distingue una automatización?',
+[
+'Siempre usa IA',
+'Sigue reglas y acciones definidas',
+'Siempre conversa'
+],
+1
+],
+[
+'Una respuesta convincente...',
+[
+'Garantiza exactitud',
+'Es evidencia',
+'Puede necesitar verificación'
+],
+2
+],
+[
+'Normativa publicada esta semana:',
+[
+'Confiar solo en memoria',
+'Consultar fuentes actuales',
+'Pedir más longitud'
+],
+1
+],
+[
+'Primer paso ante proceso complejo:',
+[
+'Construir agente',
+'Comprar herramienta',
+'Descomponer proceso'
+],
+2
+]
+];
+
+const KEY='masterIA_v1_state';
+
+const D={
+currentModule:'m1',
+currentLesson:'m1l1',
+completed:[],
+checks:{},
+notes:{},
+quiz:null,
+chat:[]
+};
+
+let S=Object.assign(
+{},
+D,
+JSON.parse(localStorage.getItem(KEY)||'{}')
+);
+
+const A=()=>M.flatMap(
+m=>m.lessons.map(
+l=>({...l,moduleId:m.id,moduleTitle:m.title})
+)
+);
+
+const L=()=>A().find(
+x=>x.id===S.currentLesson
+)||A()[0];
+
+const P=()=>Math.round(
+S.completed.length/A().length*100
+);
+
+const MP=m=>Math.round(
+m.lessons.filter(
+x=>S.completed.includes(x.id)
+).length/m.lessons.length*100
+);
+
+function save(){
+localStorage.setItem(KEY,JSON.stringify(S));
+let b=document.getElementById('save');
+b.textContent='Guardado ✓';
+setTimeout(()=>b.textContent='Guardado local',800);
+}
+
+function toast(t){
+let e=document.getElementById('toast');
+e.textContent=t;
+e.classList.add('show');
+setTimeout(()=>e.classList.remove('show'),1400);
+}
+
+function show(id){
+document.querySelectorAll('.screen').forEach(
+x=>x.classList.remove('active')
+);
+
+document.getElementById(id).classList.add('active');
+
+document.querySelectorAll('.nav button').forEach(
+b=>b.classList.toggle('active',b.dataset.n===id)
+);
+
+scrollTo({
+top:0,
+behavior:'smooth'
+});
+}
+
+document.querySelectorAll('.nav button').forEach(
+b=>b.onclick=()=>{
+render(b.dataset.n);
+show(b.dataset.n);
+}
+);
+function renderHome(){
+
+let l=L();
+let m=M.find(x=>x.id===l.moduleId);
+
+home.innerHTML=`
+<div class="hero">
+<div class="k">Tu ruta de hoy</div>
+<h1>Continúa construyendo.</h1>
+<p>Una sesión clara, sin ruido y con progreso persistente.</p>
+</div>
+
+<div class="grid">
+
+<div class="card accent">
+<div class="k">Continuar</div>
+<h2>${m.n} · ${m.title}</h2>
+<p>
+<b>${l.title}</b>
+<br>
+${l.duration} min · ${l.objective}
+</p>
+<button class="btn primary" onclick="openLesson('${l.id}')">
+Continuar →
+</button>
+</div>
+
+<div class="grid two">
+
+<div class="card">
+<div class="k">Sesión de hoy</div>
+<h2>38 min</h2>
+<p>Lección · práctica · repaso · checkpoint.</p>
+</div>
+
+<div class="card">
+<div class="k">Skill actual</div>
+<h2>${m.skills[0]}</h2>
+
+<div class="progress">
+<span style="width:${Math.max(12,MP(m))}%"></span>
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+<div class="k">Próximo hito</div>
+<h2>Completar ${m.title}</h2>
+</div>
+
+</div>
+`;
+}
+
+function renderCourses(){
+
+courses.innerHTML=`
+<div class="hero">
+<div class="k">12 módulos + capstone</div>
+<h1>Tu ruta</h1>
+<p>${S.completed.length} de ${A().length} lecciones completadas.</p>
+</div>
+
+<div class="grid">
+
+${M.map(m=>`
+
+<div class="card module" onclick="openModule('${m.id}')">
+
+<div class="k">${m.n}</div>
+
+<div class="row">
+<h2>${m.title}</h2>
+<b>${MP(m)}%</b>
+</div>
+
+<p>${m.desc}</p>
+
+<div class="chips">
+${m.skills.map(
+s=>`<span class="chip">${s}</span>`
+).join('')}
+</div>
+
+<div class="progress">
+<span style="width:${MP(m)}%"></span>
+</div>
+
+</div>
+
+`).join('')}
+
+</div>
+`;
+}
+
+function openModule(id){
+
+S.currentModule=id;
+save();
+
+let m=M.find(x=>x.id===id);
+
+module.innerHTML=`
+
+<span class="back" onclick="renderCourses();show('courses')">
+← Cursos
+</span>
+
+<div class="hero">
+
+<div class="k">
+Módulo ${m.n}
+</div>
+
+<h1>
+${m.title}
+</h1>
+
+<p>
+${m.desc}
+</p>
+
+<div class="chips">
+
+${m.skills.map(
+s=>`<span class="chip">${s}</span>`
+).join('')}
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="row">
+<b>Progreso</b>
+<span>${MP(m)}%</span>
+</div>
+
+<div class="progress">
+<span style="width:${MP(m)}%"></span>
+</div>
+
+</div>
+
+<div>
+
+${m.lessons.map((l,i)=>`
+
+<div class="lesson-row" onclick="openLesson('${l.id}')">
+
+<div class="dot ${S.completed.includes(l.id)?'done':''}">
+${S.completed.includes(l.id)?'✓':i+1}
+</div>
+
+<div>
+
+<b>${l.title}</b>
+
+<div class="small">
+${l.duration} min · ${l.objective}
+</div>
+
+</div>
+
+<span>›</span>
+
+</div>
+
+`).join('')}
+
+</div>
+
+${id==='m1'
+?'<button class="btn ghost" style="width:100%;margin-top:12px" onclick="startQuiz()">Evaluación M1 · 5 preguntas</button>'
+:''
+}
+
+`;
+
+show('module');
+}
+
+function openLesson(id){
+
+S.currentLesson=id;
+
+let l=L();
+
+S.currentModule=l.moduleId;
+
+save();
+
+renderLesson();
+
+show('lesson');
+}
+
+function renderLesson(){
+
+let l=L();
+
+let m=M.find(
+x=>x.id===l.moduleId
+);
+
+let c=S.checks[l.id];
+
+lesson.innerHTML=`
+
+<div class="lesson">
+
+<span class="back" onclick="openModule('${m.id}')">
+← ${m.title}
+</span>
+
+<div class="hero">
+
+<div class="k">
+${m.n} · ${l.duration} min
+</div>
+
+<h1>
+${l.title}
+</h1>
+
+<p>
+${l.objective}
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="k">
+Concepto
+</div>
+
+<h2>
+Idea principal
+</h2>
+
+<p>
+${l.concept}
+</p>
+
+</div>
+
+<div class="card" style="margin-top:12px">
+
+<div class="k">
+Ejemplo
+</div>
+
+<h2>
+Aplicado
+</h2>
+
+<p>
+${l.example}
+</p>
+
+</div>
+
+<div class="card" style="margin-top:12px">
+
+<div class="k">
+Ahora tú
+</div>
+
+<h2>
+Micropráctica
+</h2>
+
+<p>
+${l.practice}
+</p>
+
+<textarea id="note">${S.notes[l.id]||''}</textarea>
+
+<button
+class="btn ghost"
+style="margin-top:9px"
+onclick="
+S.notes['${l.id}']=note.value;
+save();
+toast('Nota guardada')
+">
+Guardar nota
+</button>
+
+</div>
+
+<div class="card" style="margin-top:12px">
+
+<div class="k">
+Checkpoint
+</div>
+
+<h2>
+${l.q}
+</h2>
+
+${l.opts.map((o,i)=>`
+
+<button
+class="option ${c===i?(i===l.ans?'ok':'bad'):''}"
+onclick="
+S.checks['${l.id}']=${i};
+save();
+renderLesson()
+">
+${o}
+</button>
+
+`).join('')}
+
+${c!==undefined
+?`
+<div class="call">
+${c===l.ans
+?'Correcto. Puedes continuar.'
+:'Aún no. Revisa el concepto e inténtalo otra vez.'
+}
+</div>
+`
+:''
+}
+
+</div>
+
+<div class="row" style="margin:14px 0">
+
+<button
+class="btn ${S.completed.includes(l.id)?'success':'primary'}"
+onclick="complete('${l.id}')"
+>
+${S.completed.includes(l.id)
+?'✓ Completada'
+:'Marcar completada'
+}
+</button>
+
+<button
+class="btn ghost"
+onclick="nextLesson('${l.id}')"
+>
+Siguiente →
+</button>
+
+</div>
+
+</div>
+`;
+}
+
+function complete(id){
+
+if(!S.completed.includes(id)){
+S.completed.push(id);
+}
+
+save();
+
+toast('Lección completada');
+
+renderLesson();
+
+renderHome();
+}
+
+function nextLesson(id){
+
+let a=A();
+
+let i=a.findIndex(
+x=>x.id===id
+);
+
+if(i<a.length-1){
+
+openLesson(
+a[i+1].id
+);
+
+}else{
+
+renderProgress();
+
+show('progress');
+
+}
+}
+
+let qi=0;
+
+let qa=[];
+
+function startQuiz(){
+
+qi=0;
+
+qa=[];
+
+renderQuiz();
+
+show('quiz');
+
+}
+
+function renderQuiz(){
+
+let q=QUIZ[qi];
+
+quiz.innerHTML=`
+
+<div class="lesson">
+
+<span class="back" onclick="openModule('m1')">
+← Módulo 1
+</span>
+
+<div class="hero">
+
+<div class="k">
+Evaluación M1 · ${qi+1}/5
+</div>
+
+<h1>
+${q[0]}
+</h1>
+
+</div>
+
+<div class="card">
+
+${q[1].map((o,i)=>`
+
+<button
+class="option"
+onclick="answerQuiz(${i})"
+>
+${o}
+</button>
+
+`).join('')}
+
+</div>
+
+</div>
+`;
+}
+
+function answerQuiz(i){
+
+qa.push(i);
+
+qi++;
+
+if(qi<QUIZ.length){
+
+renderQuiz();
+
+}else{
+
+let n=QUIZ.reduce(
+(s,q,j)=>s+(q[2]===qa[j]?1:0),
+0
+);
+
+S.quiz=n*2;
+
+save();
+
+quiz.innerHTML=`
+
+<div class="lesson">
+
+<div class="hero">
+
+<div class="k">
+Resultado
+</div>
+
+<h1>
+${S.quiz}/10
+</h1>
+
+<p>
+${S.quiz>=9
+?'Dominio académico excelente.'
+:S.quiz>=8
+?'Aprobado. Refuerza los fallos.'
+:'Conviene repasar el módulo.'
+}
+</p>
+
+</div>
+
+<button
+class="btn primary"
+onclick="renderProgress();show('progress')"
+>
+Ver progreso
+</button>
+
+</div>
+`;
+
+}
+}
+function esc(s){
+
+return s.replace(
+/[&<>"']/g,
+c=>({
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+'"':'&quot;',
+"'":'&#039;'
+}[c])
+);
+}
+
+function renderProfe(){
+
+let l=L();
+
+profe.innerHTML=`
+
+<div class="hero">
+
+<div class="k">
+Tutor contextual
+</div>
+
+<h1>
+✦ Profe!
+</h1>
+
+<p>
+${l.moduleTitle} · ${l.title}
+</p>
+
+</div>
+
+<div class="chat">
+
+${(
+S.chat.length
+?S.chat
+:[
+{
+role:'assistant',
+text:'Estoy viendo tu contexto académico. Puedo explicarte, darte una pista o revisar tu razonamiento sin resolver automáticamente la práctica.'
+}
+]
+).map(
+x=>`
+
+<div class="bubble ${x.role}">
+${esc(x.text)}
+</div>
+
+`
+).join('')}
+
+</div>
+
+<div class="chatbar">
+
+<button
+class="btn ghost"
+onclick="toast('Adjuntos simulados en V1')"
+>
+＋
+</button>
+
+<input
+id="chatInput"
+placeholder="Pregunta sobre tu lección..."
+>
+
+<button
+class="btn primary"
+onclick="sendChat()"
+>
+➤
+</button>
+
+</div>
+`;
+}
+
+function sendChat(){
+
+let t=chatInput.value.trim();
+
+if(!t)return;
+
+S.chat.push({
+role:'user',
+text:t
+});
+
+let l=L();
+
+let x=t.toLowerCase();
+
+let r=
+x.includes('pista')
+?
+'Pista: vuelve a la idea principal de la lección y pregúntate qué dato o condición falta antes de actuar.'
+:
+x.includes('ejemplo')
+?
+'Ejemplo paralelo: piensa en un pedido de impresión 3D. Separa entrada, validación, decisión y salida.'
+:
+x.includes('explica')||x.includes('no entiendo')
+?
+'Reformulación: '+l.concept
+:
+'Buena pregunta. Antes de darte la solución completa, identifica qué parte ya entiendes. La idea central es: '+l.concept;
+
+S.chat.push({
+role:'assistant',
+text:r
+});
+
+save();
+
+renderProfe();
+}
+
+function renderProgress(){
+
+let p=P();
+
+let q=S.quiz;
+
+let d={
+Entender:Math.min(
+95,
+22+p*.9
+),
+Dirigir:Math.min(
+92,
+18+p*.75
+),
+Evaluar:Math.min(
+90,
+14+p*.7+(q||0)*1.5
+),
+Construir:Math.min(
+88,
+8+p*.65
+)
+};
+
+progress.innerHTML=`
+
+<div class="hero">
+
+<div class="k">
+Evidencia de aprendizaje
+</div>
+
+<h1>
+Progreso
+</h1>
+
+<p>
+Completion, performance y mastery se mantienen separados.
+</p>
+
+</div>
+
+<div class="grid two">
+
+<div class="card accent">
+
+<div class="k">
+Máster
+</div>
+
+<h2>
+${p}%
+</h2>
+
+<div class="progress">
+<span style="width:${p}%"></span>
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="k">
+Performance
+</div>
+
+<h2>
+${q===null
+?'Sin evaluación'
+:q+'/10'
+}
+</h2>
+
+<p>
+Evaluación M1
+</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="k">
+AI Fluency
+</div>
+
+<div class="grid" style="margin-top:10px">
+
+${Object.entries(d).map(
+([k,v])=>`
+
+<div class="metric">
+
+<div class="row">
+
+<span>
+${k}
+</span>
+
+<b>
+${Math.round(v)}
+</b>
+
+</div>
+
+<div class="progress">
+<span style="width:${v}%"></span>
+</div>
+
+</div>
+
+`
+).join('')}
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="k">
+Recomendación
+</div>
+
+<h2>
+
+${p<15
+?'Continúa el Módulo 1'
+:q!==null&&q<8
+?'Repasa verificación y descomposición'
+:'Sigue con la próxima lección'
+}
+
+</h2>
+
+<p>
+La recomendación usa tu avance y evaluaciones guardadas localmente.
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="k">
+Portfolio
+</div>
+
+<p>
+
+${p<20
+?'Tu primer proyecto aparecerá cuando completes suficiente contenido aplicado.'
+:'Ya puedes comenzar a documentar tus primeras evidencias.'
+}
+
+</p>
+
+</div>
+`;
+}
+
+function render(id){
+
+if(id==='home'){
+renderHome();
+}
+
+if(id==='courses'){
+renderCourses();
+}
+
+if(id==='profe'){
+renderProfe();
+}
+
+if(id==='progress'){
+renderProgress();
+}
+
+}
+
+renderHome();
+
+renderCourses();
+
+renderProfe();
+
+renderProgress();
+
+</script>
+
+</body>
+</html>
